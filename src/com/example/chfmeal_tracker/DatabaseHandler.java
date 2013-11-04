@@ -1,10 +1,20 @@
 package com.example.chfmeal_tracker;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.LinkedList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Environment;
 import android.util.Log;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -34,9 +44,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_GMWT1_DESC = "gmwt1_desc";
 	private static final String KEY_GMWT2 = "gmwt2";
 	private static final String KEY_GMWT2_DESC = "gmwt2_desc";
-
-	public DatabaseHandler(Context context) {
+	private static DatabaseHandler instance;
+	private static Context mainActivityContext;
+	
+	public static DatabaseHandler getInstance(Context context){
+		
+		if( instance == null ){
+	
+			mainActivityContext= context;
+			instance = new DatabaseHandler(mainActivityContext);
+		}
+		return instance;
+	}
+	public static DatabaseHandler getInstance(){
+		
+		if( instance == null ){
+			
+			instance = new DatabaseHandler(mainActivityContext);
+		}
+		return instance;
+	}
+	private DatabaseHandler(Context context) {
+		
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		
 	}
 
 	/*
@@ -45,7 +76,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	 */
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		// TODO Auto-generated method stub
+		
+		
 		StringBuilder sb = new StringBuilder();
 		sb.append("CREATE TABLE " + TABLE_USDAfood + "(");
 		sb.append(KEY_ID + " TEXT PRIMARY KEY,");
@@ -66,13 +98,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		sb.append(")");
 		String CREATE_USDA_FOOD_TABLE = sb.toString();
 		Log.d("mydebug", CREATE_USDA_FOOD_TABLE);
-
+		
 		db.execSQL(CREATE_USDA_FOOD_TABLE);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		// TODO Auto-generated method stub
+		
 		// Drop older table if existed
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_USDAfood);
 
@@ -82,6 +114,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	// Adding new contact
 	public void addFood(Food food) {
+		
+		
+		
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
@@ -106,7 +141,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		Log.d("mydebug", "insert " + food.get_NDB_No());
 		db.close(); // Closing database connection
 	}
-
 	// Getting single contact
 	public Food getFood(String food_name) {
 		SQLiteDatabase db = this.getReadableDatabase();
@@ -114,14 +148,66 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				KEY_NAME, KEY_CALORIE, KEY_SODIUM, KEY_GMWT1, KEY_GMWT1_DESC,
 				KEY_GMWT2, KEY_GMWT2_DESC }, KEY_NAME + "=?",
 				new String[] { food_name }, null, null, null, null);
-		if (cursor != null)
+		
+		Food food = null;
+		
+		if (cursor != null && cursor.getCount()!=0){
 			cursor.moveToFirst();
-
-		Food food = new Food(cursor.getString(0), cursor.getString(1),
-				cursor.getDouble(2), cursor.getDouble(3), cursor.getDouble(4),
-				cursor.getString(5), cursor.getDouble(6), cursor.getString(7));
+			food = createFoodItem(cursor);
+		}
 		// return contact
 		return food;
 	}
 
+	public int removeFood(String foodName){
+		
+		SQLiteDatabase db = this.getWritableDatabase();
+		
+		int rows = db.delete(TABLE_USDAfood, KEY_NAME+"=?", new String[]{foodName});
+		return rows;
+	}
+	public void getFoodMatches(String food_name, List<Food> matches){
+		
+		matches.clear();
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.query(TABLE_USDAfood, new String[] { KEY_ID,
+				KEY_NAME, KEY_CALORIE, KEY_SODIUM, KEY_GMWT1, KEY_GMWT1_DESC,
+				KEY_GMWT2, KEY_GMWT2_DESC }, KEY_NAME + " LIKE ?",
+				new String[] { "%"+food_name+"%" }, null, null, null, null);
+		
+		
+		if( cursor!= null && cursor.getCount()!=0 ){
+			int rows = cursor.getCount();
+			
+			cursor.moveToFirst();
+			Food food = createFoodItem(cursor);
+			matches.add(food);
+			
+			for(int i=1;i<rows;i++){
+				
+				cursor.moveToNext();
+				food = createFoodItem(cursor);
+				matches.add(food);
+			}
+		}
+	}
+
+	private Food createFoodItem(Cursor cursor) {
+		Food food = new Food(cursor.getString(0), cursor.getString(1),
+				cursor.getDouble(2), cursor.getDouble(3), cursor.getDouble(4),
+				cursor.getString(5), cursor.getDouble(6), cursor.getString(7));
+		return food;
+	}
+
+	public int getNumRows() {
+		
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		Cursor mCount= db.rawQuery("select count(*) from "+TABLE_USDAfood, null);
+		mCount.moveToFirst();
+		int count= mCount.getInt(0);
+		mCount.close();
+		
+		return count;
+	}
 }

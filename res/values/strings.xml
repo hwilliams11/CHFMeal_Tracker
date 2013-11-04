@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">CHFMeal_Tracker</string>
+    <string name="app_name">CHF Meal Tracker</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_select_meal_type">Select Meal Type</string>
+    <string name="title_activity_search_food">Search Food</string>
 
 </resources>

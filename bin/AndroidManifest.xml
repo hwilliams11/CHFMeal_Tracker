@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.chfmeal_tracker.SelectMealTypeActivity"
+            android:label="@string/title_activity_select_meal_type" >
+        </activity>
+        <activity
+            android:name="com.example.chfmeal_tracker.SearchFoodActivity"
+            android:label="@string/title_activity_search_food" >
+        </activity>
     </application>
 
 </manifest>
