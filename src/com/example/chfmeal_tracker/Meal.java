@@ -1,6 +1,6 @@
 package com.example.chfmeal_tracker;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Meal {
 	// private variables
