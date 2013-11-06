@@ -25,10 +25,12 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        
+        //deleteDatabase("CHFMealTrackerDB");        
         DatabaseHandler dh = DatabaseHandler.getInstance(this);
         addFoodButton = (Button)findViewById(R.id.add_food_button);
-        
+
+        //dh.foo();
+        //testCount(dh);
         //testMatches(dh);
         //addFoodFromFile(this,dh);
         //testRemoveFood(dh);        
@@ -45,31 +47,39 @@ public class MainActivity extends Activity {
 		});
     }
 
-
+	private void testCount(DatabaseHandler dh) {
+		int rows = dh.getNumRows();
+        Log.d("mydebug","num rows: "+rows);
+	}
 	private void testRemoveFood(DatabaseHandler dh) {
 		int rows = dh.getNumRows();
-        Log.d("check","num rows: "+rows);
+        Log.d("mydebug","num rows: "+rows);
         
         int affected = dh.removeFood("bar");
-        Log.d("check","affected: "+affected);
+        Log.d("mydebug","affected: "+affected);
         Food food1 = dh.getFood("bar");
         if( food1 != null ){
-        	Log.d("check",food1.toString());
+        	Log.d("mydebug",food1.toString());
         }else{
-        	Log.d("check","null");
+        	Log.d("mydebug","null");
         }
 	}
 
 
 	private void testMatches(DatabaseHandler dh) {
 		
+		/*
 		List<Food> matches = new ArrayList<Food>(); 
 		dh.getFoodMatches("KRAFT",matches);
-        Log.d("check","num matches: "+matches.size());
+        Log.d("mydebug","num matches: "+matches.size());
         
-        Log.d("check",matches.get(0).toString());
-        Log.d("check",matches.get(1).toString());
+        Log.d("mydebug",matches.get(0).toString());
+        Log.d("mydebug",matches.get(1).toString());
+        */
+		Food food = dh.getFood(2);
+		Log.d("mydebug",food.toString());
 	}
+	
 
 
     @Override
@@ -92,6 +102,7 @@ public class MainActivity extends Activity {
     		
     		String[]row = scan.nextLine().split("\t");
     		Food food = new Food(row);
+    		Log.d("mydebug","new food: "+food);
     		dh.addFood(food);
     	}
     	

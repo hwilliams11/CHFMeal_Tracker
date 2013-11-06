@@ -5,8 +5,11 @@ import java.util.List;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,8 +26,8 @@ public class SearchFoodActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search_food);
 		
-		searchText = (EditText)findViewById(R.id.search_food_edit_text);
-		searchButton = (Button)findViewById(R.id.search_food_button);
+		searchText = (EditText)findViewById(R.id.searchFoodEditText);
+		searchButton = (Button)findViewById(R.id.searchFoodButton);
 		dh = DatabaseHandler.getInstance();
 		lv = (ListView)findViewById(R.id.matchesListView);
 		final List<Food> matches = new ArrayList<Food>();
@@ -37,9 +40,22 @@ public class SearchFoodActivity extends Activity {
 			public void onClick(View v) {
 				
 				String search = searchText.getText().toString();
+				Log.d("check","search: "+search);
 				dh.getFoodMatches(search,matches);
 			}
 		});
+		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			
+		    public void onItemClick(AdapterView parent, View v, int position, long id){
+		       
+		    	Food food = matches.get(position);
+		    	Intent intent = new Intent(SearchFoodActivity.this,SetServingSizeActivity.class);
+				intent.putExtra("foodId", food.get_NDB_No());
+				startActivity(intent);
+		    }
+		});
+		
+		//food_id = getIntent().getExtras().getInt("food_id");
 	}
 
 	@Override
