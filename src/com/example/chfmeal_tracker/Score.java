@@ -1,40 +1,49 @@
 package com.example.chfmeal_tracker;
 
-import java.util.Date;
-
 public class Score {
-	Date date;
+	String date;
+	int meal_type;
 	double ideal_sodium;
 	double ideal_calorie;
 	double actual_sodium;
 	double actual_calorie;
 
-	public Score(Date date, double ideal_sodium, double ideal_calorie,
-			double actual_sodium, double actual_calorie) {
+	public Score(String date, int meal_type, double ideal_calorie,
+			double ideal_sodium, double actual_calorie, double actual_sodium) {
 		super();
 		this.date = date;
+		this.meal_type = meal_type;
 		this.ideal_sodium = ideal_sodium;
 		this.ideal_calorie = ideal_calorie;
 		this.actual_sodium = actual_sodium;
 		this.actual_calorie = actual_calorie;
 	}
 
-	public Score(double ideal_sodium, double ideal_calorie,
+	public Score(int meal_type, double ideal_sodium, double ideal_calorie,
 			double actual_sodium, double actual_calorie) {
 		super();
-		this.date = new Date();
+
+		this.meal_type = meal_type;
 		this.ideal_sodium = ideal_sodium;
 		this.ideal_calorie = ideal_calorie;
 		this.actual_sodium = actual_sodium;
 		this.actual_calorie = actual_calorie;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public int getMeal_type() {
+		return meal_type;
+	}
+
+	public void setMeal_type(int meal_type) {
+		this.meal_type = meal_type;
 	}
 
 	public double getIdeal_sodium() {

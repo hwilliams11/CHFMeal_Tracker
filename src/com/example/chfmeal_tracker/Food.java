@@ -18,9 +18,27 @@ public class Food {
 	double _gmwt2;
 	String _gmwt2_desc;
 
+	public Food(String _NDB_No, String _food_name, String _calorie,
+			String _sodium_mg) {
+		super();
+		this._NDB_No = Integer.parseInt(_NDB_No);
+		this._food_name = _food_name;
+		this._calorie = Double.parseDouble(_calorie);
+		this._sodium_mg = Double.parseDouble(_sodium_mg);
+	}
 
-	public Food(int _NDB_No, String _food_name, double _calorie,double _protein_g,
-			double _carbohydrate_g,double _sodium_mg, double _cholesterol_mg, double _gmwt1, String _gmwt1_desc,
+	public Food(int _NDB_No, String _food_name, double _calorie,
+			double _sodium_mg) {
+		super();
+		this._NDB_No = _NDB_No;
+		this._food_name = _food_name;
+		this._calorie = _calorie;
+		this._sodium_mg = _sodium_mg;
+	}
+
+	public Food(int _NDB_No, String _food_name, double _calorie,
+			double _protein_g, double _carbohydrate_g, double _sodium_mg,
+			double _cholesterol_mg, double _gmwt1, String _gmwt1_desc,
 			double _gmwt2, String _gmwt2_desc) {
 		super();
 		this._NDB_No = _NDB_No;
@@ -58,14 +76,18 @@ public class Food {
 		this._gmwt2 = _gmwt2;
 		this._gmwt2_desc = _gmwt2_desc;
 	}
-	public Food(String[]data){
-		
-		this(Integer.parseInt(data[0]),data[1],Double.parseDouble(data[2]),
-				Double.parseDouble(data[3]),Double.parseDouble(data[4]),Double.parseDouble(data[5]),
-				Double.parseDouble(data[6]),Double.parseDouble(data[7]),Double.parseDouble(data[8]),
-				Double.parseDouble(data[9]),Double.parseDouble(data[10]),Double.parseDouble(data[11]),
-				data[12],Double.parseDouble(data[13]),data[14]);
+
+	public Food(String[] data) {
+
+		this(Integer.parseInt(data[0]), data[1], Double.parseDouble(data[2]),
+				Double.parseDouble(data[3]), Double.parseDouble(data[4]),
+				Double.parseDouble(data[5]), Double.parseDouble(data[6]),
+				Double.parseDouble(data[7]), Double.parseDouble(data[8]),
+				Double.parseDouble(data[9]), Double.parseDouble(data[10]),
+				Double.parseDouble(data[11]), data[12], Double
+						.parseDouble(data[13]), data[14]);
 	}
+
 	public int get_NDB_No() {
 		return _NDB_No;
 	}
