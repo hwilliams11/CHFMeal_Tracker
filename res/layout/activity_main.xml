@@ -17,6 +17,14 @@
         android:text="Add Food" 
         android:onClick="selectMeasl"/>
 
-    
+    <Button
+        android:id="@+id/view_log_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewLog"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:onClick="viewHistoryLog"
+        android:text="View Log" />
 
 </RelativeLayout>
