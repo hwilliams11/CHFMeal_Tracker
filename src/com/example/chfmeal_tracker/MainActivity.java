@@ -19,6 +19,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
     private Button addFoodButton; 
+    private Button viewLogButton;
     private Activity act;
     
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class MainActivity extends Activity {
         //deleteDatabase("CHFMealTrackerDB");        
         DatabaseHandler dh = DatabaseHandler.getInstance(this);
         addFoodButton = (Button)findViewById(R.id.add_food_button);
+        viewLogButton = (Button)findViewById(R.id.view_log_button);
 
         //dh.foo();
         //testCount(dh);
@@ -45,6 +47,19 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+        
+        viewLogButton.setOnClickListener(new View.OnClickListener() {
+    		
+    		
+			@Override
+			public void onClick(View v) {
+				
+				Intent intent = new Intent(MainActivity.this,HistoryLogActivity.class);
+				startActivity(intent);
+			}
+		});
+        
+        
     }
 
 	private void testCount(DatabaseHandler dh) {
