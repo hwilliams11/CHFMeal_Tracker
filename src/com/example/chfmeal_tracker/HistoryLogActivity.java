@@ -25,7 +25,7 @@ public class HistoryLogActivity extends Activity {
 		setContentView(R.layout.history_log);
 		
 		dh = DatabaseHandler.getInstance();
-		final List<Meal> mealList = new ArrayList<Meal>();
+		final ArrayList<Meal> mealList = new ArrayList<Meal>();
 		
 		lv.setAdapter(new MatchListAdapter(this,mealList));
 		
