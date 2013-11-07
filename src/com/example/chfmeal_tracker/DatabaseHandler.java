@@ -86,6 +86,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		createScoreTable(db);
 		// create meals table
 		createMealsTable(db);
+		
+		//just to add 2 dummy records into the meals table for testing purposes
+		Meal meal1 = new Meal("001", "hamburger", 1.0, 200.0, 50.0, "2013-11-07", 1);
+		Meal meal2 = new Meal("002", "salad", 1.0, 100.0, 10.0, "2013-11-07", 2);
+		addMeal(meal1);
+		addMeal(meal2);
 
 	}
 
