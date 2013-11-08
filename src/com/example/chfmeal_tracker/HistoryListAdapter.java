@@ -9,31 +9,33 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class MatchListAdapter extends BaseAdapter {
+public class HistoryListAdapter extends BaseAdapter {
 
-	private List<Food> matches;
+	private List<Meal> history;
 	private Context context;
 	private ViewHolder mHolder = null;
 	private LayoutInflater mInflater = null;
+	private static DatabaseHandler dh;
 	
 	private final class ViewHolder{
-		TextView nameTextView;
+		TextView textView;
 	}
 
-	public MatchListAdapter(Context context,List<Food> matches){
+	public HistoryListAdapter(Context context,List<Meal> history,DatabaseHandler dh){
 		
 		this.context = context;
-		this.matches = matches;
+		this.history = history;
+		this.dh = dh;
 		mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
 	}
 	public int getCount() {
 		
-		return matches.size();
+		return history.size();
 	}
 	public Object getItem(int index) {
 		
-		return matches.get(index);
+		return history.get(index);
 	}
 	public long getItemId(int index) {
 		
@@ -43,13 +45,19 @@ public class MatchListAdapter extends BaseAdapter {
 		
 		if( convertView==null ){
 			mHolder = new ViewHolder();
-			convertView = mInflater.inflate(R.layout.match_list_item, null);
+			convertView = mInflater.inflate(R.layout.history_list_item, null);
 			convertView.setTag(mHolder);
 		}else{
 			mHolder = (ViewHolder)convertView.getTag();
 		}
-		mHolder.nameTextView = (TextView)convertView.findViewById(R.id.matchesNameTextView);
-		mHolder.nameTextView.setText(matches.get(position).get_food_name());
+	
+		Meal meal = history.get(position);
+		Food food = dh.getFood(meal.get_NDB_No());
+		String name = food.get_food_name();
+		String date = meal.get_Date();
+		mHolder.textView = (TextView)convertView.findViewById(R.id.historyLogTextView);
+		mHolder.textView.setText(name+" "+date);
+
 		
 		return convertView;
 	}

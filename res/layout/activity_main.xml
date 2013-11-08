@@ -9,7 +9,7 @@
     tools:context=".MainActivity" >
 
     <TextView android:id="@+id/breakfastTextView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:layout_marginTop="36dp" android:text="Calories: 1000/2000" /><Button
-        android:id="@+id/add_food_button"
+        android:id="@+id/addFoodButtonMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/breakfastTextView"
@@ -18,13 +18,12 @@
         android:onClick="selectMeasl"/>
 
     <Button
-        android:id="@+id/view_log_button"
+        android:id="@+id/viewHistoryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/viewLog"
+        android:layout_below="@+id/addFoodButtonMain"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:onClick="viewHistoryLog"
-        android:text="View Log" />
+        android:layout_marginTop="30dp"
+        android:text="View History" />
 
 </RelativeLayout>

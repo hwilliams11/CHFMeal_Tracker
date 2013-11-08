@@ -3,6 +3,8 @@ package com.example.chfmeal_tracker;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.chfmeal_tracker.Meal.MealType;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -17,10 +19,11 @@ import android.widget.ListView;
 
 public class SearchFoodActivity extends Activity {
 
-	Button searchButton;
-	EditText searchText;
-	DatabaseHandler dh;
-	ListView lv;
+	private Button searchButton;
+	private EditText searchText;
+	private DatabaseHandler dh;
+	private ListView lv;
+	private MatchListAdapter adapter;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,7 +35,8 @@ public class SearchFoodActivity extends Activity {
 		lv = (ListView)findViewById(R.id.matchesListView);
 		final List<Food> matches = new ArrayList<Food>();
 		
-		lv.setAdapter(new MatchListAdapter(this,matches));
+		adapter = new MatchListAdapter(this,matches);
+		lv.setAdapter(adapter);
 		
 		searchButton.setOnClickListener(new View.OnClickListener() {
 			
@@ -42,6 +46,7 @@ public class SearchFoodActivity extends Activity {
 				String search = searchText.getText().toString();
 				Log.d("check","search: "+search);
 				dh.getFoodMatches(search,matches);
+				adapter.notifyDataSetChanged();
 			}
 		});
 		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -51,7 +56,9 @@ public class SearchFoodActivity extends Activity {
 		    	Food food = matches.get(position);
 		    	Intent intent = new Intent(SearchFoodActivity.this,SetServingSizeActivity.class);
 				intent.putExtra("foodId", food.get_NDB_No());
+				intent.putExtra("mealType", getIntent().getExtras().getInt("mealType"));
 				startActivity(intent);
+				finish();
 		    }
 		});
 		

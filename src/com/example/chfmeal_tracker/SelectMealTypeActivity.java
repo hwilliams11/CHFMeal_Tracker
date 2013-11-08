@@ -1,8 +1,11 @@
 package com.example.chfmeal_tracker;
 
+import com.example.chfmeal_tracker.Meal.MealType;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
@@ -23,10 +26,10 @@ public class SelectMealTypeActivity extends Activity {
 		snack = (TextView)findViewById(R.id.snackTextView);
 		
 		
-		breakfast.setOnClickListener(new AddFoodListener("breakfast"));
-		lunch.setOnClickListener(new AddFoodListener("lunch"));
-		dinner.setOnClickListener(new AddFoodListener("dinner"));
-		snack.setOnClickListener(new AddFoodListener("snack"));
+		breakfast.setOnClickListener(new AddFoodListener(MealType.BREAKFAST));
+		lunch.setOnClickListener(new AddFoodListener(MealType.LUNCH));
+		dinner.setOnClickListener(new AddFoodListener(MealType.DINNER));
+		snack.setOnClickListener(new AddFoodListener(MealType.SNACK));
 	}
 
 	@Override
@@ -38,15 +41,16 @@ public class SelectMealTypeActivity extends Activity {
 	
 	class AddFoodListener implements View.OnClickListener{
 
-		String type;
-		public AddFoodListener(String type){
-			this.type = type;
+		int type;
+		public AddFoodListener(MealType mealType){
+			this.type = mealType.type;
 		}
 		@Override
 		public void onClick(View v) {
 			
 			Intent intent = new Intent(SelectMealTypeActivity.this,SearchFoodActivity.class);
-			intent.putExtra("meal_type", type);
+			intent.putExtra("mealType", type);
+			Log.d("mydebug","type: "+type);
 			startActivity(intent);
 			
 		}

@@ -1,5 +1,7 @@
 package com.example.chfmeal_tracker;
 
+import com.example.chfmeal_tracker.Meal.MealType;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.text.Editable;
@@ -13,9 +15,11 @@ import android.widget.TextView;
 
 public class SetServingSizeActivity extends Activity {
 
-	TextView nutritionTextView;
-	EditText numServingsEditText;
-	Button addFoodButton;
+	private TextView nutritionTextView;
+	private EditText numServingsEditText;
+	private Button addFoodButton;
+	private MealType mealType;
+	private DatabaseHandler dh;
 	
 	Food food;
 	Integer numServings;
@@ -29,7 +33,11 @@ public class SetServingSizeActivity extends Activity {
 		addFoodButton = (Button)findViewById(R.id.addFoodButton);
 		
 		int foodId = getIntent().getExtras().getInt("foodId");
-		DatabaseHandler dh = DatabaseHandler.getInstance();
+		int num = getIntent().getExtras().getInt("mealType");
+		Log.d("mydebug","meal type here: "+num);
+		mealType = Meal.getMealType(num);
+		
+		dh = DatabaseHandler.getInstance();
 		
 		food = dh.getFood(foodId);
 		numServings = Integer.parseInt(numServingsEditText.getText().toString());
@@ -64,7 +72,12 @@ public class SetServingSizeActivity extends Activity {
 		addFoodButton.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
-								
+				
+				
+				Meal m = new Meal(food.get_NDB_No()+"",mealType ,numServings);
+				Log.d("mydebug",m.toString());
+				dh.addMeal(m);
+				finish();				
 			}
 		});		
 		
