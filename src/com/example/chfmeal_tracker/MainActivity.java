@@ -26,15 +26,15 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
+        //this line deletes database when uncommented
         //deleteDatabase("CHFMealTrackerDB");        
         DatabaseHandler dh = DatabaseHandler.getInstance(this);
         addFoodButton = (Button)findViewById(R.id.addFoodButtonMain);
         viewHistoryButton = (Button)findViewById(R.id.viewHistoryButton);
-
-        testCount(dh);
-        testMatches(dh);
+        
+        //this line reads and stores database to phone, uncomment to store.
         //addFoodFromFile(this,dh);
-        //testRemoveFood(dh);        
+    
         
         addFoodButton.setOnClickListener(new View.OnClickListener() {
 		
@@ -103,7 +103,7 @@ public class MainActivity extends Activity {
     private void addFoodFromFile(Context context, DatabaseHandler dh){
     	
     	Scanner scan = null;
-    	
+    	Log.d("mydebug","inserting from file");
     	try {
 			scan = new Scanner(context.getAssets().open("USDAfood.tsv"));
 		} catch (IOException e) {e.printStackTrace();}
