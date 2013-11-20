@@ -83,17 +83,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    /*
-     * There is where we need to write create table statements.This is called
-     * when database is created.
-     */
-    public void createTables() {
-
-            SQLiteDatabase db = getWritableDatabase();
-            //createScoreTable(db);
-            createMealsTable(db);
-    }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -148,25 +137,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     private void createUSDATable(SQLiteDatabase db) {
-            StringBuilder sb = new StringBuilder();
-            sb.append("CREATE TABLE " + TABLE_MEAL + "(");
-            sb.append(KEY_ID + " INTEGER,");
-            sb.append(KEY_DATE + " DATE,");
-            sb.append(KEY_SERVING_SIZE + " REAL,");
-            sb.append(KEY_MEAL_TYPE + " INTEGER, ");
-
-            sb.append("FOREIGN KEY(");
-            sb.append(KEY_ID);
-            sb.append(") REFERENCES ");
-            sb.append(TABLE_USDAfood + "(");
-            sb.append(KEY_ID);
-
-            sb.append("))");
-            ;
-            String CREATE_MEAL_TABLE = sb.toString();
-            Log.d("mydebug", CREATE_MEAL_TABLE);
-
-            db.execSQL(CREATE_MEAL_TABLE);
+	    	StringBuilder sb = new StringBuilder();
+	        sb.append("CREATE TABLE " + TABLE_USDAfood + "(");
+	        sb.append(KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,");
+	        sb.append(KEY_NAME + " TEXT,");
+	        sb.append(KEY_WATER + " REAL,");
+	        sb.append(KEY_CALORIE + " REAL,");
+	        sb.append(KEY_PROTEIN + " REAL,");
+	        sb.append(KEY_CARBOHYDRATE + " REAL,");
+	        sb.append(KEY_FIBER + " REAL,");
+	        sb.append(KEY_SUGAR + " REAL,");
+	        sb.append(KEY_CALCIUM + " REAL,");
+	        sb.append(KEY_SODIUM + " REAL,");
+	        sb.append(KEY_CHOLESTEROL + " REAL,");
+	        sb.append(KEY_GMWT1 + " REAL,");
+	        sb.append(KEY_GMWT1_DESC + " TEXT,");
+	        sb.append(KEY_GMWT2 + " REAL,");
+	        sb.append(KEY_GMWT2_DESC + " TEXT");
+	        sb.append(")");
+	        String CREATE_USDA_FOOD_TABLE = sb.toString();
+	        Log.d("mydebug", CREATE_USDA_FOOD_TABLE);
+	
+	        db.execSQL(CREATE_USDA_FOOD_TABLE);
     }
 
     @Override
