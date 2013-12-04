@@ -14,7 +14,7 @@ public class HistoryLogActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_history_log);
-
+	
 		dh = DatabaseHandler.getInstance();
 		lv = (ListView)findViewById(R.id.historyListView);
 		final ArrayList<Meal> history = new ArrayList<Meal>();

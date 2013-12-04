@@ -1,9 +1,13 @@
 package com.example.chfmeal_tracker;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import com.example.chfmeal_tracker.Meal.MealType;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -36,7 +40,7 @@ public class SetServingSizeActivity extends Activity {
 		int num = getIntent().getExtras().getInt("mealType");
 		Log.d("mydebug","meal type here: "+num);
 		mealType = Meal.getMealType(num);
-		
+		Log.d("mydebug","meal type: "+mealType);
 		dh = DatabaseHandler.getInstance();
 		
 		food = dh.getFood(foodId);
@@ -74,10 +78,19 @@ public class SetServingSizeActivity extends Activity {
 			public void onClick(View v) {
 				
 				
-				Meal m = new Meal(food.get_NDB_No()+"",mealType ,numServings);
+				
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	            Log.d("mydebug", dateFormat.format(new Date()));
+	            String date = dateFormat.format(new Date());
+				Meal m = new Meal(food.get_NDB_No()+"",date,numServings,mealType);
 				Log.d("mydebug",m.toString());
 				dh.addMeal(m);
-				finish();				
+				new SyncMealItems().execute();
+				
+				Intent intent = new Intent(SetServingSizeActivity.this,HistoryLogActivity.class);
+				startActivity(intent);
+				
+				
 			}
 		});		
 		

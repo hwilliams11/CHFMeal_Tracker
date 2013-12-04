@@ -19,6 +19,9 @@ public class Meal {
         	MealType(int type){
         		this.type = type;
         	}
+        	public int getInt(){
+        		return type;
+        	}
         }
         public static MealType getMealType(int type){
         	
@@ -41,12 +44,13 @@ public class Meal {
                 this.calorie = calorie;
                 this.sodium = sodium;
         }
-
-        public Meal(String _NDB_No, MealType _Type, double _Serving) {
+        
+        public Meal(String _NDB_No, String _Date, double _Serving, MealType _Type) {
                 super();
                 this._NDB_No = Integer.parseInt(_NDB_No);
                 this._Type = _Type;
                 this._Serving = _Serving;
+                this._Date = _Date;
         }
 
         public String getFood_name() {
@@ -81,6 +85,7 @@ public class Meal {
                 return _NDB_No;
         }
 
+        
         public MealType get_Type() {
                 return _Type;
         }

@@ -31,10 +31,10 @@ public class MainActivity extends Activity {
         DatabaseHandler dh = DatabaseHandler.getInstance(this);
         addFoodButton = (Button)findViewById(R.id.addFoodButtonMain);
         viewHistoryButton = (Button)findViewById(R.id.viewHistoryButton);
-        
         //this line reads and stores database to phone, uncomment to store.
         //addFoodFromFile(this,dh);
-    
+        
+        new SyncMealItems().execute();
         
         addFoodButton.setOnClickListener(new View.OnClickListener() {
 		
@@ -105,7 +105,7 @@ public class MainActivity extends Activity {
     	Scanner scan = null;
     	Log.d("mydebug","inserting from file");
     	try {
-			scan = new Scanner(context.getAssets().open("USDAfood.tsv"));
+			scan = new Scanner(context.getAssets().open("USDAfood.txt"));
 		} catch (IOException e) {e.printStackTrace();}
     	
     	scan.nextLine();

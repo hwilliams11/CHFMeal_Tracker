@@ -49,6 +49,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_DATE = "creation_date";
     private static final String KEY_MEAL_TYPE = "meal_type";
     private static final String KEY_SERVING_SIZE = "serving_size";
+    private static final String KEY_MEAL_SYNCED = "meal_synced";
     // Scores Table Columns names
     private static final String KEY_IDEAL_CALORIE = "ideal_calorie";
     private static final String KEY_IDEAL_SODIUM = "ideal_sodium";
@@ -74,6 +75,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             if (instance == null) {
 
                     instance = new DatabaseHandler(mainActivityContext);
+                    
             }
             return instance;
     }
@@ -94,7 +96,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             createMealsTable(db);
 
     }
-
+    public void foo(){
+    	
+    	
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	db.execSQL("DROP TABLE IF EXISTS " + TABLE_MEAL);
+    	createMealsTable(db);
+    }
     private void createMealsTable(SQLiteDatabase db) {
 
             StringBuilder sb = new StringBuilder();
@@ -105,6 +113,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             sb.append(KEY_DATE + " DATE,");
             sb.append(KEY_SERVING_SIZE + " REAL,");
             sb.append(KEY_MEAL_TYPE + " INTEGER,");
+            sb.append(KEY_MEAL_SYNCED + " INTEGER,");
 
             sb.append("FOREIGN KEY(");
             sb.append(KEY_ID);
@@ -160,7 +169,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	
 	        db.execSQL(CREATE_USDA_FOOD_TABLE);
     }
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             // TODO Auto-generated method stub
@@ -274,6 +282,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                             matches.add(food);
                     }
             }
+            if( cursor==null)
+            	Log.d("mydebug","cursor is null");
+            else
+            	Log.d("mydebug","Returned: "+cursor.getCount());
     }
 
     private Food createFoodItem(Cursor cursor) {
@@ -308,7 +320,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             Log.d("mydebug", dateFormat.format(new Date()));
             values.put(KEY_DATE, dateFormat.format(new Date()));
             values.put(KEY_SERVING_SIZE, meal.get_Serving());
-            values.put(KEY_MEAL_TYPE, meal.get_Type()+"");
+            values.put(KEY_MEAL_TYPE, meal.get_Type().getInt()+"");
+            values.put(KEY_MEAL_SYNCED, 0+"");
             Log.d("mydebug","mealtype: "+meal.get_Type());
             // Inserting Row
             db.insert(TABLE_MEAL, null, values);
@@ -398,4 +411,58 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             return null;
 
     }
+    public List<Meal> getNewMeals(){
+    	
+    	
+    	SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<Meal> matches = new ArrayList<Meal>();
+        
+        
+        String query = "SELECT * from " + TABLE_MEAL+" WHERE "+KEY_MEAL_SYNCED+"=0";
+        Cursor cursor = db.rawQuery(query,null);
+        
+        if (cursor != null && cursor.getCount() != 0) {
+            int rows = cursor.getCount();
+
+            cursor.moveToFirst();
+            Meal meal = createMealItem(cursor);
+            matches.add(meal);
+
+            for (int i = 1; i < rows; i++) {
+
+                    cursor.moveToNext();
+                    meal = createMealItem(cursor);
+                    matches.add(meal);
+		            }
+		    }
+		    if( cursor==null)
+		    	Log.d("mydebug","cursor is null");
+		    else
+		    	Log.d("mydebug","Returned: "+cursor.getCount());
+    
+        return matches;
+    }
+    private Meal createMealItem(Cursor cursor){
+    
+    	Meal meal = new Meal(cursor.getString(0),cursor.getString(1),
+    			cursor.getDouble(2),Meal.getMealType(cursor.getInt(3)));
+
+    	return meal;
+
+    }
+
+	public void updateMeal(String _NDB_No, String _Date, String _Type) {
+		
+		SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_MEAL_SYNCED,1);
+        
+        int numRows = db.update(TABLE_MEAL, values, KEY_ID+" =? AND "
+          +KEY_DATE+" =? AND "+KEY_MEAL_TYPE+" =?",new String[]{_NDB_No,_Date,_Type});
+        
+        Log.d("mydebug","numrows: "+numRows);
+        
+        db.close();
+		
+	}
 }

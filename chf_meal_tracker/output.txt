@@ -1,0 +1,71 @@
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
+{"1694":1,"6571":1}
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
+{"1694":1,"6571":1}
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
+{"1694":1,"6571":1}
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
+{"1694":1,"6571":1}
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
+[{"_NDB_No":1694,"success":1},{"_NDB_No":6571,"success":1}]
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
+[{"_NDB_No":1694,"success":1},{"_NDB_No":6571,"success":1}]
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
+[{"_NDB_No":1694,"_Type":0,"_Date":"2013-11-25","success":1},{"_NDB_No":6571,"_Type":0,"_Date":"2013-11-25","success":1}]
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
+[{"_NDB_No":1694,"_Type":0,"_Date":"2013-11-25","success":1},{"_NDB_No":6571,"_Type":0,"_Date":"2013-11-25","success":1}]
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
+[{"_NDB_No":1694,"_Type":0,"_Date":"2013-11-25","success":1},{"_NDB_No":6571,"_Type":0,"_Date":"2013-11-25","success":1}]
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
+[{"_NDB_No":1694,"_Type":0,"_Date":"2013-11-25","success":1},{"_NDB_No":6571,"_Type":0,"_Date":"2013-11-25","success":1}]
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
+[{"_NDB_No":1694,"_Type":0,"_Date":"2013-11-25","success":0},{"_NDB_No":6571,"_Type":0,"_Date":"2013-11-25","success":0}]
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
+[{"_NDB_No":1694,"_Type":0,"_Date":"2013-11-25","success":1},{"_NDB_No":6571,"_Type":0,"_Date":"2013-11-25","success":1}]
+[]
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 8099,'2013-11-26' ,1,1)
+[{"_NDB_No":8099,"_Type":1,"_Date":"2013-11-26","success":1}]
+[]
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 4607,'2013-11-26' ,1,2)
+[{"_NDB_No":4607,"_Type":2,"_Date":"2013-11-26","success":1}]
+
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6846,'2013-11-26' ,1,2)
+[{"_NDB_No":6846,"_Type":2,"_Date":"2013-11-26","success":1}]
