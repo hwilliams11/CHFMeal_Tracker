@@ -33,5 +33,5 @@
         <activity android:name="com.example.chfmeal_tracker.SetServingSizeActivity" android:label="@string/title_activity_set_serving_size"></activity>
         <activity android:name="com.example.chfmeal_tracker.HistoryLogActivity" android:label="@string/title_activity_history_log"></activity>
     </application>
-
+	<uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

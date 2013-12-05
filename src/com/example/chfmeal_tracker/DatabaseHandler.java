@@ -15,7 +15,7 @@ import android.util.Log;
 public class DatabaseHandler extends SQLiteOpenHelper {
 	// All Static variables
 	// Database Version
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 8;
 
 	// Database Name
 	private static final String DATABASE_NAME = "CHFMealTrackerDB";
@@ -171,6 +171,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// Drop older table if existed
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SCORE);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_MEAL);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_USDAfood);
 		// Create tables again
 		onCreate(db);
 	}
@@ -312,18 +313,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		double sodium = 0;
 		// get the calorie and sodium from the food table
 		SQLiteDatabase db = this.getReadableDatabase();
-
-		String query = "SELECT calorie, sodium_mg FROM USDAfood where NDB_No=?";
-		db.rawQuery(query, new String[] { meal._NDB_No + "" });
+		Log.d("mydebug", "food_id: " + meal._NDB_No);
+		String query = "SELECT calorie, sodium_mg FROM USDAfood where NDB_No="
+				+ meal._NDB_No;
 		Cursor cursor = db.rawQuery(query, null);
-		Log.d("mydebug", "finished query db for meals");
+		Log.d("mydebug", "finished query db for calorie and sodium");
 		if (cursor != null && cursor.getCount() != 0) {
 			int rows = cursor.getCount();
 
 			cursor.moveToFirst();
 			calories = cursor.getDouble(0) * meal._Serving;
 			sodium = cursor.getDouble(1) * meal._Serving;
+
 		}
+		Log.d("mydebug", "caloires: " + calories);
+		Log.d("mydebug", "sodium: " + sodium);
 		db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
 
@@ -368,7 +372,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public void getMeals(ArrayList<Meal> result) {
 
 		SQLiteDatabase db = this.getReadableDatabase();
-		String query = "SELECT meals.NDB_No, food_name, serving_size, calorie, sodium_mg, creation_date, meal_type FROM USDAfood, meals where USDAfood.NDB_No=meals.NDB_No ORDER BY creation_date, meal_type";
+		String query = "SELECT meals.NDB_No, creation_date, serving_size, calorie, sodium_mg,  meal_type,food_name FROM USDAfood, meals where USDAfood.NDB_No=meals.NDB_No ORDER BY creation_date, meal_type";
 
 		Cursor cursor = db.rawQuery(query, null);
 		Log.d("mydebug", "finished query db for meals");
@@ -379,8 +383,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 			Meal meal = new Meal(cursor.getString(0), cursor.getString(1),
 					cursor.getDouble(2), cursor.getDouble(3),
-					cursor.getDouble(4), cursor.getString(5),
-					Meal.getMealType(cursor.getInt(6)));
+					cursor.getDouble(4), Meal.getMealType(cursor.getInt(5)),
+					cursor.getString(6));
 
 			result.add(meal);
 			for (int i = 1; i < rows; i++) {
@@ -388,8 +392,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				cursor.moveToNext();
 				result.add(new Meal(cursor.getString(0), cursor.getString(1),
 						cursor.getDouble(2), cursor.getDouble(3), cursor
-								.getDouble(4), cursor.getString(5), Meal
-								.getMealType(cursor.getInt(6))));
+								.getDouble(4), Meal.getMealType(cursor
+								.getInt(5)), cursor.getString(6)));
 
 			}
 			Log.d("mydebug", result.toString());
@@ -456,8 +460,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private Meal createMealItem(Cursor cursor) {
 
 		Meal meal = new Meal(cursor.getString(0), cursor.getString(1),
-				cursor.getDouble(2), Meal.getMealType(cursor.getInt(3)));
-
+				cursor.getDouble(2), Meal.getMealType(cursor.getInt(3)),
+				cursor.getDouble(4), cursor.getDouble(5));
+		Log.d("mydebug", "In createMealItem caloire: " + meal.calorie);
+		Log.d("mydebug", "In createMealItem sodium: " + meal.sodium);
 		return meal;
 
 	}

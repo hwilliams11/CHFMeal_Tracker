@@ -69,12 +69,13 @@
 		$_Type = get_meal_int($meal['_Type']);
 		$_Serving = $meal['_Serving'];
 
-		
+		$calories=$meal['calorie'];
+		$sodium=$meal['sodium'];
 		
 		$content = file_get_contents($file);
 		
 		// mysql inserting a new row
-		$query = "INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, $_NDB_No,'$_Date' ,$_Serving,$_Type)";
+		$query = "INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 0, $_NDB_No,'$_Date' ,$_Serving,$_Type, $calories, $sodium)";
 		$content .= "\r\n".$query."\r\n";
 		file_put_contents($file, $content);;
 		$result = mysql_query($query);
