@@ -8,7 +8,7 @@ public class Meal {
 	String _Date;
 	double _Serving;
 	String food_name;
-	double calorie;
+	double calories;
 	double sodium;
 
 	public enum MealType {
@@ -42,18 +42,18 @@ public class Meal {
 	}
 
 	public Meal(String _NDB_No, String _Date, double _Serving, MealType _Type,
-			double calorie, double sodium) {
+			double calories, double sodium) {
 		super();
 		this._NDB_No = Integer.parseInt(_NDB_No);
 		this._Type = _Type;
 		this._Date = _Date;
 		this._Serving = _Serving;
 
-		this.calorie = calorie;
+		this.calories = calories;
 		this.sodium = sodium;
 	}
 
-	public Meal(String _NDB_No, String _Date, double _Serving, double calorie,
+	public Meal(String _NDB_No, String _Date, double _Serving, double calories,
 			double sodium, MealType _Type, String food_name) {
 		super();
 		this._NDB_No = Integer.parseInt(_NDB_No);
@@ -61,7 +61,7 @@ public class Meal {
 		this._Date = _Date;
 		this._Serving = _Serving;
 		this.food_name = food_name;
-		this.calorie = calorie;
+		this.calories = calories;
 		this.sodium = sodium;
 	}
 
@@ -81,12 +81,12 @@ public class Meal {
 		this.food_name = food_name;
 	}
 
-	public double getCalorie() {
-		return calorie;
+	public double getCalories() {
+		return calories;
 	}
 
-	public void setCalorie(double calorie) {
-		this.calorie = calorie;
+	public void setCalorie(double calories) {
+		this.calories = calories;
 	}
 
 	public double getSodium() {

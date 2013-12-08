@@ -5,7 +5,7 @@ public class Food {
 	int _NDB_No;
 	String _food_name;
 	double _water_g;
-	double _calorie;
+	double _calories;
 	double _protein_g;
 	double _carbohydrate_g;
 	double _fiber_g;
@@ -18,30 +18,30 @@ public class Food {
 	double _gmwt2;
 	String _gmwt2_desc;
 
-    public Food(String _NDB_No, String _food_name, String _calorie,
+    public Food(String _NDB_No, String _food_name, String _calories,
             String _sodium_mg) {
 	    super();
 	    this._NDB_No = Integer.parseInt(_NDB_No);
 	    this._food_name = _food_name;
-	    this._calorie = Double.parseDouble(_calorie);
+	    this._calories = Double.parseDouble(_calories);
 	    this._sodium_mg = Double.parseDouble(_sodium_mg);
 	}
 
-    public Food(int _NDB_No, String _food_name, double _calorie,
+    public Food(int _NDB_No, String _food_name, double _calories,
             double _sodium_mg) {
 	    super();
 	    this._NDB_No = _NDB_No;
 	    this._food_name = _food_name;
-	    this._calorie = _calorie;
+	    this._calories = _calories;
 	    this._sodium_mg = _sodium_mg;
 	}
-	public Food(int _NDB_No, String _food_name, double _calorie,double _protein_g,
+	public Food(int _NDB_No, String _food_name, double _calories,double _protein_g,
 			double _carbohydrate_g,double _sodium_mg, double _cholesterol_mg, double _gmwt1, String _gmwt1_desc,
 			double _gmwt2, String _gmwt2_desc) {
 		super();
 		this._NDB_No = _NDB_No;
 		this._food_name = _food_name;
-		this._calorie = _calorie;
+		this._calories = _calories;
 		this._protein_g = _protein_g;
 		this._carbohydrate_g = _carbohydrate_g;
 		this._sodium_mg = _sodium_mg;
@@ -53,7 +53,7 @@ public class Food {
 	}
 
 	public Food(int _NDB_No, String _food_name, double _water_g,
-			double _calorie, double _protein_g, double _carbohydrate_g,
+			double _calories, double _protein_g, double _carbohydrate_g,
 			double _fiber_g, double _sugar_g, double _calcium_mg,
 			double _sodium_mg, double _cholesterol_mg, double _gmwt1,
 			String _gmwt1_desc, double _gmwt2, String _gmwt2_desc) {
@@ -61,7 +61,7 @@ public class Food {
 		this._NDB_No = _NDB_No;
 		this._food_name = _food_name;
 		this._water_g = _water_g;
-		this._calorie = _calorie;
+		this._calories = _calories;
 		this._protein_g = _protein_g;
 		this._carbohydrate_g = _carbohydrate_g;
 		this._fiber_g = _fiber_g;
@@ -106,12 +106,12 @@ public class Food {
 		this._water_g = _water_g;
 	}
 
-	public double get_calorie() {
-		return _calorie;
+	public double get_calories() {
+		return _calories;
 	}
 
-	public void set_calorie(double _calorie) {
-		this._calorie = _calorie;
+	public void set_calories(double _calories) {
+		this._calories = _calories;
 	}
 
 	public double get_protein_g() {
@@ -205,7 +205,7 @@ public class Food {
 	@Override
 	public String toString() {
 		return "Food [_NDB_No=" + _NDB_No + ", _food_name=" + _food_name
-				+ ", _water_g=" + _water_g + ", _calorie=" + _calorie
+				+ ", _water_g=" + _water_g + ", _calories=" + _calories
 				+ ", _protein_g=" + _protein_g + ", _carbohydrate_g="
 				+ _carbohydrate_g + ", _fiber_g=" + _fiber_g + ", _sugar_g="
 				+ _sugar_g + "]";

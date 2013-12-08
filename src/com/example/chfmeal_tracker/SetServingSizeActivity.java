@@ -107,7 +107,7 @@ public class SetServingSizeActivity extends Activity {
 		if( food!= null ){
 			double scale = numServings;
 			
-			int numCalories = (int)(food.get_calorie()*scale);
+			int numCalories = (int)(food.get_calories()*scale);
 			int cholest = (int)(food.get_cholesterol_mg()*scale);
 			int sodium = (int)(food.get_sodium_mg()*scale);
 			int carb = (int)(food.get_carbohydrate_g()*scale);

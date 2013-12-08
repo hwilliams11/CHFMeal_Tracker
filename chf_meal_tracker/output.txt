@@ -1,93 +1,351 @@
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+SELECT * FROM `scores` WHERE creation_date=2012-12-10 AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
-{"1694":1,"6571":1}
+SELECT * FROM `scores` WHERE creation_date=2012-12-03 AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+SELECT * FROM `scores` WHERE creation_date=2012-12-04 AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
-{"1694":1,"6571":1}
+SELECT * FROM `scores` WHERE creation_date=2012-12-05 AND patientID=0
+[[],[],[],[]]
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+SELECT * FROM `scores` WHERE creation_date="2013-12-10" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
-{"1694":1,"6571":1}
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
-{"1694":1,"6571":1}
+2013-12-03 1500 2000 0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
-[{"_NDB_No":1694,"success":1},{"_NDB_No":6571,"success":1}]
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
-[{"_NDB_No":1694,"success":1},{"_NDB_No":6571,"success":1}]
+2013-12-04 1500 2000 0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
-[{"_NDB_No":1694,"_Type":0,"_Date":"2013-11-25","success":1},{"_NDB_No":6571,"_Type":0,"_Date":"2013-11-25","success":1}]
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
-[{"_NDB_No":1694,"_Type":0,"_Date":"2013-11-25","success":1},{"_NDB_No":6571,"_Type":0,"_Date":"2013-11-25","success":1}]
+2013-12-05 1200 2200 0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+[[],{"Hello":"bye"},{"Hello":"bye"},{"Hello":"bye"}]
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
-[{"_NDB_No":1694,"_Type":0,"_Date":"2013-11-25","success":1},{"_NDB_No":6571,"_Type":0,"_Date":"2013-11-25","success":1}]
+SELECT * FROM `scores` WHERE creation_date="2013-12-10" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
-[{"_NDB_No":1694,"_Type":0,"_Date":"2013-11-25","success":1},{"_NDB_No":6571,"_Type":0,"_Date":"2013-11-25","success":1}]
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+2013-12-03 1500 2000 0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
-[{"_NDB_No":1694,"_Type":0,"_Date":"2013-11-25","success":0},{"_NDB_No":6571,"_Type":0,"_Date":"2013-11-25","success":0}]
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 1694,'2013-11-25' ,1,0)
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6571,'2013-11-25' ,1,0)
-[{"_NDB_No":1694,"_Type":0,"_Date":"2013-11-25","success":1},{"_NDB_No":6571,"_Type":0,"_Date":"2013-11-25","success":1}]
-[]
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 8099,'2013-11-26' ,1,1)
-[{"_NDB_No":8099,"_Type":1,"_Date":"2013-11-26","success":1}]
-[]
+2013-12-04 1500 2000 0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 4607,'2013-11-26' ,1,2)
-[{"_NDB_No":4607,"_Type":2,"_Date":"2013-11-26","success":1}]
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 6846,'2013-11-26' ,1,2)
-[{"_NDB_No":6846,"_Type":2,"_Date":"2013-11-26","success":1}]
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 2,'2013-12-05' ,3,0)
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type ) VALUES ( 0, 2,'2013-12-05' ,3,0)
-[{"_NDB_No":2,"_Type":0,"_Date":"2013-12-05","success":1},{"_NDB_No":2,"_Type":0,"_Date":"2013-12-05","success":0}]
+2013-12-05 1200 2200 0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 0, 2,'2013-12-05' ,3,0, , 2481)
-[{"_NDB_No":2,"_Type":0,"_Date":"2013-12-05","success":0}]
+[[],{"Hello":"bye"},{"Hello":"bye"},{"Hello":"bye"}]
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 0, 2,'2013-12-05' ,3,1, , 2481)
-[{"_NDB_No":2,"_Type":1,"_Date":"2013-12-05","success":0}]
+SELECT * FROM `scores` WHERE creation_date="2013-12-10" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 0, 2,'2013-12-05' ,3,1, , 2481)
-[{"_NDB_No":2,"_Type":1,"_Date":"2013-12-05","success":0}]
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 0, 2,'2013-12-05' ,3,1, , 2481)
-[{"_NDB_No":2,"_Type":1,"_Date":"2013-12-05","success":0}]
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 0, 2,'2013-12-05' ,3,1, 2151, 2481)
+2013-12-03 1500 2000 0
 
-INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 0, 1,'2013-12-05' ,1,0, 717, 714)
-[{"_NDB_No":2,"_Type":1,"_Date":"2013-12-05","success":1},{"_NDB_No":1,"_Type":0,"_Date":"2013-12-05","success":1}]
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+2013-12-04 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+2013-12-05 1200 2200 0
+
+[[],{"patient":"0","date":"2013-12-03","calorie":null,"sodium":null},{"patient":"0","date":"2013-12-04","calorie":null,"sodium":null},{"patient":"0","date":"2013-12-05","calorie":null,"sodium":null}]
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-10" AND patientID=0
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+
+2013-12-03 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+2013-12-04 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+2013-12-05 1200 2200 0
+
+[[],{"patient":"0","date":"2013-12-03","calories":"1500","sodium":null},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":null},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":null}]
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-10" AND patientID=0
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+
+2013-12-03 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+2013-12-04 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+2013-12-05 1200 2200 0
+
+[[],{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-10" AND patientID=0
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+
+2013-12-03 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+2013-12-04 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+2013-12-05 1200 2200 0
+
+[[],{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-10" AND patientID=0
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+
+2013-12-03 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+2013-12-04 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+2013-12-05 1200 2200 0
+
+[[],{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-10" AND patientID=0
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+
+2013-12-03 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+2013-12-04 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+2013-12-05 1200 2200 0
+
+[[],{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-12" AND patientID=0
+
+2013-12-12 1200 2200 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+
+2013-12-03 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+2013-12-04 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+2013-12-05 1200 2200 0
+
+[{"patient":"0","date":"2013-12-12","calories":"1200","sodium":"2200"},{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-12" AND patientID=0
+
+2013-12-12 1200 2200 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+
+2013-12-03 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+2013-12-04 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+2013-12-05 1200 2200 0
+
+[{"patient":"0","date":"2013-12-12","calories":"1200","sodium":"2200"},{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-12" AND patientID=0
+
+2013-12-12 1200 2200 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+
+2013-12-03 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+2013-12-04 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+2013-12-05 1200 2200 0
+
+[{"patient":"0","date":"2013-12-12","calories":"1200","sodium":"2200"},{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-12" AND patientID=0
+
+2013-12-12 1200 2200 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+
+2013-12-03 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+2013-12-04 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+2013-12-05 1200 2200 0
+
+[{"patient":"0","date":"2013-12-12","calories":"1200","sodium":"2200"},{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-12" AND patientID=0
+
+2013-12-12 1200 2200 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+
+2013-12-03 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+2013-12-04 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+2013-12-05 1200 2200 0
+
+[{"patient":"0","date":"2013-12-12","calories":"1200","sodium":"2200"},{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-12" AND patientID=0
+
+2013-12-12 1200 2200 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+
+2013-12-03 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+2013-12-04 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+2013-12-05 1200 2200 0
+
+[{"patient":"0","date":"2013-12-12","calories":"1200","sodium":"2200"},{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-12" AND patientID=0
+
+2013-12-12 1200 2200 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+
+2013-12-03 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+2013-12-04 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+2013-12-05 1200 2200 0
+
+[{"patient":"0","date":"2013-12-12","calories":"1200","sodium":"2200"},{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-12" AND patientID=0
+
+2013-12-12 1200 2200 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+
+2013-12-03 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+
+2013-12-04 1500 2000 0
+
+
+SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+
+2013-12-05 1200 2200 0
+
+[{"patient":"0","date":"2013-12-12","calories":"1200","sodium":"2200"},{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]

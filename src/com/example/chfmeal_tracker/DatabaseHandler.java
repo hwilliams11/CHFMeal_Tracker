@@ -28,7 +28,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_ID = "NDB_No";
 	private static final String KEY_NAME = "food_name";
 	private static final String KEY_WATER = "water_g";
-	private static final String KEY_CALORIE = "calorie";
+	private static final String KEY_CALORIES = "calories";
 	private static final String KEY_PROTEIN = "protein_g";
 	private static final String KEY_CARBOHYDRATE = "carbohydrate_g";
 	private static final String KEY_FIBER = "fiber_g";
@@ -146,7 +146,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		sb.append(KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,");
 		sb.append(KEY_NAME + " TEXT,");
 		sb.append(KEY_WATER + " REAL,");
-		sb.append(KEY_CALORIE + " REAL,");
+		sb.append(KEY_CALORIES + " REAL,");
 		sb.append(KEY_PROTEIN + " REAL,");
 		sb.append(KEY_CARBOHYDRATE + " REAL,");
 		sb.append(KEY_FIBER + " REAL,");
@@ -188,7 +188,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		values.put(KEY_NAME, food.get_food_name());
 		values.put(KEY_WATER, food.get_water_g());
-		values.put(KEY_CALORIE, food.get_calorie());
+		values.put(KEY_CALORIES, food.get_calories());
 		values.put(KEY_PROTEIN, food.get_protein_g());
 		values.put(KEY_CARBOHYDRATE, food.get_carbohydrate_g());
 		values.put(KEY_FIBER, food.get_fiber_g());
@@ -210,7 +210,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public Food getFood(String food_name) {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_USDAfood, new String[] { KEY_ID,
-				KEY_NAME, KEY_CALORIE, KEY_PROTEIN, KEY_CARBOHYDRATE,
+				KEY_NAME, KEY_CALORIES, KEY_PROTEIN, KEY_CARBOHYDRATE,
 				KEY_SODIUM, KEY_CHOLESTEROL, KEY_GMWT1, KEY_GMWT1_DESC,
 				KEY_GMWT2, KEY_GMWT2_DESC }, KEY_NAME + "=?",
 				new String[] { food_name }, null, null, null, null);
@@ -228,7 +228,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public Food getFood(int foodId) {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_USDAfood, new String[] { KEY_ID,
-				KEY_NAME, KEY_CALORIE, KEY_PROTEIN, KEY_CARBOHYDRATE,
+				KEY_NAME, KEY_CALORIES, KEY_PROTEIN, KEY_CARBOHYDRATE,
 				KEY_SODIUM, KEY_CHOLESTEROL, KEY_GMWT1, KEY_GMWT1_DESC,
 				KEY_GMWT2, KEY_GMWT2_DESC }, KEY_ID + "=?",
 				new String[] { foodId + "" }, null, null, null, null);
@@ -260,7 +260,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		matches.clear();
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_USDAfood, new String[] { KEY_ID,
-				KEY_NAME, KEY_CALORIE, KEY_PROTEIN, KEY_CARBOHYDRATE,
+				KEY_NAME, KEY_CALORIES, KEY_PROTEIN, KEY_CARBOHYDRATE,
 				KEY_SODIUM, KEY_CHOLESTEROL, KEY_GMWT1, KEY_GMWT1_DESC,
 				KEY_GMWT2, KEY_GMWT2_DESC }, KEY_NAME + " LIKE ?",
 				new String[] { "%" + food_name + "%" }, null, null, null, null);
@@ -462,7 +462,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		Meal meal = new Meal(cursor.getString(0), cursor.getString(1),
 				cursor.getDouble(2), Meal.getMealType(cursor.getInt(3)),
 				cursor.getDouble(4), cursor.getDouble(5));
-		Log.d("mydebug", "In createMealItem caloire: " + meal.calorie);
+		Log.d("mydebug", "In createMealItem caloire: " + meal.calories);
 		Log.d("mydebug", "In createMealItem sodium: " + meal.sodium);
 		return meal;
 
@@ -482,5 +482,29 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		db.close();
 
+	}
+
+	public void updateDesiredScore(String date, double calories, double sodium) {
+		
+		/* insert(String table, String nullColumnHack, ContentValues values)
+		Convenience method for inserting a row into the database.*/
+		
+		SQLiteDatabase db = this.getWritableDatabase();
+		
+		ContentValues values = new ContentValues();
+
+		values.put(KEY_CREATION_DATE, date);
+		values.put(KEY_IDEAL_CALORIES, calories);
+		values.put(KEY_IDEAL_SODIUM, sodium);
+		
+		
+		long ret = db.insert(TABLE_SCORE, null, values);
+		if( ret == - 1){
+			Log.d("mydebug","error inserting values in updateDesiredScore");
+		}else{
+			Log.d("mydebug","successfully inserted values in updateDesiredScore");
+		}
+		
+		
 	}
 }

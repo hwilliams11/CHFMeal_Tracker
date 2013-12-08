@@ -28,10 +28,11 @@ public class MainActivity extends Activity {
 		addFoodButton = (Button) findViewById(R.id.addFoodButtonMain);
 		viewHistoryButton = (Button) findViewById(R.id.viewHistoryButton);
 		// this line reads and stores database to phone, uncomment to store.
-		// addFoodFromFile(this, dh);
+		//addFoodFromFile(this, dh);
 
 		new SyncMealItems().execute();
-
+		new GetDesiredScores().execute();
+		
 		addFoodButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
