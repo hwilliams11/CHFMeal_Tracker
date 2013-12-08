@@ -5,35 +5,37 @@
     android:orientation="vertical" >
 
     <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="Select Meal to add for today"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    
+     <ImageButton
         android:id="@+id/breakfastTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:tag="breakfast"
-        android:text="Breakfast"
-        android:textSize="25sp" />
-
-    <TextView
+        android:src="@drawable/breakfast" />
+     
+      <ImageButton
         android:id="@+id/lunchTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:tag="lunch"
-        android:text="Lunch"
-        android:textSize="25sp" />
-
-    <TextView
+        android:src="@drawable/lunch" />
+      
+       <ImageButton
         android:id="@+id/dinnerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:tag="dinner"
-        android:text="Dinner"
-        android:textSize="25sp" />
-
-    <TextView
+        android:src="@drawable/dinner" />
+       
+        <ImageButton
         android:id="@+id/snackTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:tag="snack"
-        android:text="Snack"
-        android:textSize="25sp" />
-
+        android:src="@drawable/snacks" />
+    
+    
 </LinearLayout>
