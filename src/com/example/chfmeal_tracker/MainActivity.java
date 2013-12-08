@@ -11,11 +11,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainActivity extends Activity {
 
-	private Button addFoodButton;
-	private Button viewHistoryButton;
+	private ImageButton addFoodButton;
+	private ImageButton viewHistoryButton;
 	private Activity act;
 
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +26,8 @@ public class MainActivity extends Activity {
 		// this line deletes database when uncommented
 		// deleteDatabase("CHFMealTrackerDB");
 		DatabaseHandler dh = DatabaseHandler.getInstance(this);
-		addFoodButton = (Button) findViewById(R.id.addFoodButtonMain);
-		viewHistoryButton = (Button) findViewById(R.id.viewHistoryButton);
+		addFoodButton = (ImageButton) findViewById(R.id.addFoodButtonMain);
+		viewHistoryButton = (ImageButton) findViewById(R.id.viewHistoryButton);
 		// this line reads and stores database to phone, uncomment to store.
 		//addFoodFromFile(this, dh);
 
