@@ -3,6 +3,7 @@ package com.example.chfmeal_tracker;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import android.content.ContentValues;
@@ -415,6 +416,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		}
 		Log.d("dbdebug", "no match found in db");
 		return null;
+	}
+
+	public HashMap<String, Double> getActualScores(String date) {
+		SQLiteDatabase db = this.getReadableDatabase();
+		double actual_calories = 0;
+		double actual_sodium = 0;
+		String query = "SELECT SUM(calories), SUM(sodium) from " + TABLE_MEAL
+				+ " where creation_date='" + date + "'";
+		Log.d("dbdebug", query);
+		Cursor cursor = db.rawQuery(query, null);
+		if (cursor != null && cursor.getCount() != 0) {
+			int rows = cursor.getCount();
+			cursor.moveToFirst();
+			actual_calories = cursor.getDouble(0);
+			actual_sodium = cursor.getDouble(1);
+		}
+		HashMap<String, Double> result = new HashMap<String, Double>();
+		result.put("actual_calories", actual_calories);
+		result.put("actual_sodium", actual_sodium);
+		return result;
 	}
 
 	public ArrayList<Score> getScores() {
