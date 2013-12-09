@@ -161,11 +161,11 @@ public class SyncMealItems extends AsyncTask<String, String, String> {
 
 			updateSyncedMeals(jsonArray);
 
-			Log.d("mydebug", "response: \n" + response.toString());
+			// Log.d("mydebug", "response: \n" + response.toString());
 			// handle response here...
 
-			System.out.println(org.apache.http.util.EntityUtils
-					.toString(response.getEntity()));
+			// System.out.println(org.apache.http.util.EntityUtils
+			// .toString(response.getEntity()));
 
 		} catch (Exception ex) {
 			// handle exception here

@@ -15,7 +15,7 @@ import android.util.Log;
 public class DatabaseHandler extends SQLiteOpenHelper {
 	// All Static variables
 	// Database Version
-	private static final int DATABASE_VERSION = 8;
+	private static final int DATABASE_VERSION = 9;
 
 	// Database Name
 	private static final String DATABASE_NAME = "CHFMealTrackerDB";
@@ -311,13 +311,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public void addMeal(Meal meal) {
 		double calories = 0;
 		double sodium = 0;
-		// get the calorie and sodium from the food table
+		// get the calories and sodium from the food table
 		SQLiteDatabase db = this.getReadableDatabase();
 		Log.d("mydebug", "food_id: " + meal._NDB_No);
-		String query = "SELECT calorie, sodium_mg FROM USDAfood where NDB_No="
+		String query = "SELECT calories, sodium_mg FROM USDAfood where NDB_No="
 				+ meal._NDB_No;
 		Cursor cursor = db.rawQuery(query, null);
-		Log.d("mydebug", "finished query db for calorie and sodium");
+		Log.d("mydebug", "finished query db for calories and sodium");
 		if (cursor != null && cursor.getCount() != 0) {
 			int rows = cursor.getCount();
 
@@ -372,7 +372,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public void getMeals(ArrayList<Meal> result) {
 
 		SQLiteDatabase db = this.getReadableDatabase();
-		String query = "SELECT meals.NDB_No, creation_date, serving_size, calorie, sodium_mg,  meal_type,food_name FROM USDAfood, meals where USDAfood.NDB_No=meals.NDB_No ORDER BY creation_date, meal_type";
+		String query = "SELECT meals.NDB_No, creation_date, serving_size, meals.calories, sodium_mg,  meal_type,food_name FROM USDAfood, meals where USDAfood.NDB_No=meals.NDB_No ORDER BY creation_date, meal_type";
 
 		Cursor cursor = db.rawQuery(query, null);
 		Log.d("mydebug", "finished query db for meals");
@@ -498,7 +498,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		Log.d("mydebug", "numrows: " + numRows);
 
 		db.close();
-
+		Log.d("dbdebug", "updated the sync bit in meals");
 	}
 
 	public void updateDesiredScore(String date, double calories, double sodium) {
