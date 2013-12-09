@@ -28,7 +28,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_ID = "NDB_No";
 	private static final String KEY_NAME = "food_name";
 	private static final String KEY_WATER = "water_g";
-	private static final String KEY_CALORIES = "calorie";
+	private static final String KEY_CALORIES = "calories";
 	private static final String KEY_PROTEIN = "protein_g";
 	private static final String KEY_CARBOHYDRATE = "carbohydrate_g";
 	private static final String KEY_FIBER = "fiber_g";
