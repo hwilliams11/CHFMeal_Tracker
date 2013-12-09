@@ -28,7 +28,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_ID = "NDB_No";
 	private static final String KEY_NAME = "food_name";
 	private static final String KEY_WATER = "water_g";
-	private static final String KEY_CALORIES = "calories";
+	private static final String KEY_CALORIES = "calorie";
 	private static final String KEY_PROTEIN = "protein_g";
 	private static final String KEY_CARBOHYDRATE = "carbohydrate_g";
 	private static final String KEY_FIBER = "fiber_g";
@@ -282,7 +282,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		if (cursor == null)
 			Log.d("mydebug", "cursor is null");
 		else
-			Log.d("mydebug", "Returned: " + cursor.getCount());
+			Log.d("mydebug", "returned: " + cursor.getCount());
 	}
 
 	private Food createFoodItem(Cursor cursor) {
@@ -400,6 +400,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		}
 	}
 
+	public Score getDesiredScore(String date) {
+		SQLiteDatabase db = this.getReadableDatabase();
+		String query = "SELECT * from " + TABLE_SCORE
+				+ " WHERE creation_date='" + date + "'";
+		Log.d("dbdebug", query);
+		Cursor cursor = db.rawQuery(query, null);
+		if (cursor != null && cursor.getCount() != 0) {
+			int rows = cursor.getCount();
+
+			cursor.moveToFirst();
+			return new Score(cursor.getString(0), cursor.getDouble(1),
+					cursor.getDouble(2));
+		}
+		Log.d("dbdebug", "no match found in db");
+		return null;
+	}
+
 	public ArrayList<Score> getScores() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		String query = "SELECT * from " + TABLE_SCORE
@@ -485,26 +502,27 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	}
 
 	public void updateDesiredScore(String date, double calories, double sodium) {
-		
-		/* insert(String table, String nullColumnHack, ContentValues values)
-		Convenience method for inserting a row into the database.*/
-		
+
+		/*
+		 * insert(String table, String nullColumnHack, ContentValues values)
+		 * Convenience method for inserting a row into the database.
+		 */
+
 		SQLiteDatabase db = this.getWritableDatabase();
-		
+
 		ContentValues values = new ContentValues();
 
 		values.put(KEY_CREATION_DATE, date);
 		values.put(KEY_IDEAL_CALORIES, calories);
 		values.put(KEY_IDEAL_SODIUM, sodium);
-		
-		
+
 		long ret = db.insert(TABLE_SCORE, null, values);
-		if( ret == - 1){
-			Log.d("mydebug","error inserting values in updateDesiredScore");
-		}else{
-			Log.d("mydebug","successfully inserted values in updateDesiredScore");
+		if (ret == -1) {
+			Log.d("mydebug", "error inserting values in updateDesiredScore");
+		} else {
+			Log.d("mydebug",
+					"successfully inserted values in updateDesiredScore");
 		}
-		
-		
+
 	}
 }

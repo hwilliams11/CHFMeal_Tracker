@@ -1,23 +1,46 @@
 package com.example.chfmeal_tracker;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
 	private ImageButton addFoodButton;
 	private ImageButton viewHistoryButton;
 	private Activity act;
+	private TextView calorie_budget = null;
+	private TextView sodium_budget = null;
+	private final int default_patientID = 3;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,12 +51,15 @@ public class MainActivity extends Activity {
 		DatabaseHandler dh = DatabaseHandler.getInstance(this);
 		addFoodButton = (ImageButton) findViewById(R.id.addFoodButtonMain);
 		viewHistoryButton = (ImageButton) findViewById(R.id.viewHistoryButton);
+		calorie_budget = (TextView) findViewById(R.id.TextView3);
+		sodium_budget = (TextView) findViewById(R.id.TextView4);
 		// this line reads and stores database to phone, uncomment to store.
-		//addFoodFromFile(this, dh);
+		// addFoodFromFile(this, dh);
 
 		new SyncMealItems().execute();
-		new GetDesiredScores().execute();
-		
+		new GetDesiredScores()
+				.execute("http://10.0.2.2/chf_meal_tracker/get_desired_scores.php");
+
 		addFoodButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -55,39 +81,6 @@ public class MainActivity extends Activity {
 
 			}
 		});
-	}
-
-	private void testCount(DatabaseHandler dh) {
-		int rows = dh.getNumRows();
-		Log.d("mydebug", "num rows: " + rows);
-	}
-
-	private void testRemoveFood(DatabaseHandler dh) {
-		int rows = dh.getNumRows();
-		Log.d("mydebug", "num rows: " + rows);
-
-		int affected = dh.removeFood("bar");
-		Log.d("mydebug", "affected: " + affected);
-		Food food1 = dh.getFood("bar");
-		if (food1 != null) {
-			Log.d("mydebug", food1.toString());
-		} else {
-			Log.d("mydebug", "null");
-		}
-	}
-
-	private void testMatches(DatabaseHandler dh) {
-
-		/*
-		 * List<Food> matches = new ArrayList<Food>();
-		 * dh.getFoodMatches("KRAFT",matches);
-		 * Log.d("mydebug","num matches: "+matches.size());
-		 * 
-		 * Log.d("mydebug",matches.get(0).toString());
-		 * Log.d("mydebug",matches.get(1).toString());
-		 */
-		Food food = dh.getFood(2);
-		Log.d("mydebug", food.toString());
 	}
 
 	@Override
@@ -117,5 +110,82 @@ public class MainActivity extends Activity {
 			dh.addFood(food);
 		}
 
+	}
+
+	private class GetDesiredScores extends AsyncTask<String, Void, String> {
+		@Override
+		protected String doInBackground(String... urls) {
+			// try to get the desired score for that day from db
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			Score score = DatabaseHandler.getInstance().getDesiredScore(
+					dateFormat.format(new Date()));
+			if (score == null) {
+				return POST(urls[0]);
+			} else {
+				return "{" + "'calorie_budget':" + score.ideal_calorie
+						+ ",'sodium_budget':" + score.ideal_sodium + "}";
+			}
+
+		}
+
+		protected String POST(String url) {
+			// Create the HTTP request
+			HttpParams httpParameters = new BasicHttpParams();
+			HttpClient httpclient = new DefaultHttpClient(httpParameters);
+			HttpPost httppost = new HttpPost(url);
+			ArrayList<NameValuePair> keyValuePairs = new ArrayList<NameValuePair>();
+			keyValuePairs.add(new BasicNameValuePair("patientID",
+					default_patientID + ""));
+			try {
+				httppost.setEntity(new UrlEncodedFormEntity(keyValuePairs));
+			} catch (UnsupportedEncodingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			HttpResponse response;
+			try {
+				response = httpclient.execute(httppost);
+				HttpEntity entity = response.getEntity();
+				String result = EntityUtils.toString(entity);
+
+				return result;
+
+			} catch (ClientProtocolException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			return null;
+		}
+
+		// onPostExecute displays the results of the AsyncTask.
+		@Override
+		protected void onPostExecute(String result) {
+			// Create a JSON object from the request response
+			Log.d("dbdebug", result);
+			JSONObject jsonObject;
+			if (result != null) {
+				try {
+					jsonObject = new JSONObject(result);
+					// Retrieve the data from the JSON object
+					double calories = jsonObject.getDouble("calorie_budget");
+					double sodium = jsonObject.getDouble("sodium_budget");
+
+					calorie_budget.setText(calories + "");
+					sodium_budget.setText(sodium + "");
+					SimpleDateFormat dateFormat = new SimpleDateFormat(
+							"yyyy-MM-dd");
+					DatabaseHandler.getInstance().updateDesiredScore(
+							dateFormat.format(new Date()), calories, sodium);
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+		}
 	}
 }
