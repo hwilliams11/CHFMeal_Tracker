@@ -32,7 +32,8 @@ public class SyncMealItems extends AsyncTask<String, String, String> {
 	private static final String TAG_NDB_No = "_NDB_No";
 
 	private DatabaseHandler dh;
-	private static String url_sync_meals = "http://10.0.2.2/chf_meal_tracker/sync_meals.php";
+	//private static String url_sync_meals = "http://10.0.2.2/chf_meal_tracker/sync_meals.php";
+	private static String url_sync_meals = "http://hit1.nimbus.cip.gatech.edu/chf_meal_tracker/sync_meals.php";
 
 	/**
 	 * Before starting background thread Show Progress Dialog

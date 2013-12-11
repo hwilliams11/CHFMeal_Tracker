@@ -39,6 +39,11 @@ public class ShowScoreVisualization extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_score_visualization);
 		
+		getScoreData();
+		
+	}
+
+	private void getScoreData() {
 		start = 0;
 		dh = DatabaseHandler.getInstance();
 		scores = dh.getAllScores();
@@ -129,7 +134,6 @@ public class ShowScoreVisualization extends Activity {
             layout = (LinearLayout) findViewById(R.id.graph2);  
             layout.addView(graphView2); 
 		}
-		
 	}
 
 	@Override

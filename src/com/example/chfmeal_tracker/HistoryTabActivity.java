@@ -16,7 +16,7 @@ public class HistoryTabActivity extends TabActivity {
         TabHost tabHost = getTabHost();
         
         TabSpec tab1 = tabHost.newTabSpec("View Log");
-        TabSpec tab2 = tabHost.newTabSpec("View Graph");
+        TabSpec tab2 = tabHost.newTabSpec("View Graphs");
         
         
          
@@ -26,8 +26,8 @@ public class HistoryTabActivity extends TabActivity {
         // tab1.setContent(new Intent(this,HistoryLogActivity.class));
          tab1.setContent(new Intent(this,HistoryLogActivity.class));
          
-         tab2.setIndicator("View Graph");
-         tab2.setContent(new Intent(this,DayActivity.class));
+         tab2.setIndicator("View Graphs");
+         tab2.setContent(new Intent(this,ShowScoreVisualization.class));
 
          //tab3.setIndicator("Score Graph");
          //tab3.setContent(new Intent(this,DayActivity.class));

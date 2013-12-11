@@ -26,7 +26,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
-public class GetDesiredScores extends AsyncTask<String, String, String> {
+public class GetDesiredScoresTest extends AsyncTask<String, String, String> {
 
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_NDB_No = "_NDB_No";

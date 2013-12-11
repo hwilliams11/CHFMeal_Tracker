@@ -37,9 +37,10 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+	private static final String url_get_desired_scores = "http://hit1.nimbus.cip.gatech.edu/chf_meal_tracker/get_desired_scores.php";
+	//private static final String url_get_desired_scores = "http://10.0.2.2/chf_meal_tracker/get_desired_scores.php";
 	private Button addFoodButton;
 	private Button viewHistoryButton;
-	private Button viewScoreHistoryButton;
 	private Activity act;
 	private TextView calorie_budget = null;
 	private TextView sodium_budget = null;
@@ -62,7 +63,6 @@ public class MainActivity extends Activity {
 		DatabaseHandler dh = DatabaseHandler.getInstance(this);
 		addFoodButton = (Button) findViewById(R.id.addFood);
 		viewHistoryButton = (Button) findViewById(R.id.ShowHistory);
-		viewScoreHistoryButton = (Button) findViewById(R.id.viewProgress);
 		calorie_budget = (TextView) findViewById(R.id.desired_calories);
 		sodium_budget = (TextView) findViewById(R.id.desired_sodium);
 		calorie_togo = (TextView) findViewById(R.id.calorie_to_go);
@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
 
 		new SyncMealItems().execute();
 		new GetDesiredScores()
-				.execute("http://10.0.2.2/chf_meal_tracker/get_desired_scores.php");
+				.execute(url_get_desired_scores);
 
 		addFoodButton.setOnClickListener(new View.OnClickListener() {
 
@@ -96,24 +96,19 @@ public class MainActivity extends Activity {
 			public void onClick(View arg0) {
 
 				Intent intent = new Intent(MainActivity.this,
-						HistoryLogActivity.class);
-				startActivity(intent);
-
-			}
-		});
-		viewScoreHistoryButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-
-				Intent intent = new Intent(MainActivity.this,
-						ShowScoreVisualization.class);
+						HistoryTabActivity.class);
 				startActivity(intent);
 
 			}
 		});
 	}
-
+	@Override
+	protected void onRestart() {
+		
+		super.onRestart();
+		new GetDesiredScores()
+		.execute(url_get_desired_scores);
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -144,16 +139,20 @@ public class MainActivity extends Activity {
 	}
 
 	private class GetDesiredScores extends AsyncTask<String, Void, String> {
+		
+		boolean in_local=false;
 		@Override
 		protected String doInBackground(String... urls) {
 			// try to get the desired score for that day from db
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-			Score score = DatabaseHandler.getInstance().getDesiredScore(
-					dateFormat.format(new Date()));
+			String date = dateFormat.format(new Date());
+			Score score = DatabaseHandler.getInstance().getDesiredScore(date);
+			Log.d("mydebug","date: "+date);
+			
 			if (score == null) {
 				return POST(urls[0]);
 			} else {
+				in_local=true;
 				return "{" + "'calorie_budget':" + score.ideal_calorie
 						+ ",'sodium_budget':" + score.ideal_sodium + "}";
 			}
@@ -197,7 +196,7 @@ public class MainActivity extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 			// Create a JSON object from the request response
-			Log.d("dbdebug", result);
+			Log.d("dbdebug", "result: "+result);
 			JSONObject jsonObject;
 			if (result != null) {
 				try {
@@ -205,46 +204,46 @@ public class MainActivity extends Activity {
 					// Retrieve the data from the JSON object
 					double calories = jsonObject.getDouble("calorie_budget");
 					double sodium = jsonObject.getDouble("sodium_budget");
-
-					calorie_budget.setText(calories + "");
-					sodium_budget.setText(sodium + "");
+					
+					calorie_budget.setText((int)calories + "");
+					sodium_budget.setText((int)sodium + "");
 					// get actual score
 					SimpleDateFormat dateFormat = new SimpleDateFormat(
 							"yyyy-MM-dd");
 					HashMap<String, Double> actual_scores = DatabaseHandler
 							.getInstance().getActualScores(
 									dateFormat.format(new Date()));
-					actual_calories.setText(actual_scores
-							.get("actual_calories") + "/");
-					actual_sodium.setText(actual_scores.get("actual_sodium")
-							+ "/");
 					double act_calories = actual_scores.get("actual_calories");
 					double act_sodium = actual_scores.get("actual_sodium");
-
+					actual_calories.setText( (int)act_calories+ "/");
+					actual_sodium.setText( (int)act_sodium+"/");
+					
 					if (act_calories > calories) {
 						calorie_img.setImageResource(R.drawable.red_arrow);
-						calorie_togo.setText((act_calories - calories) + "");
+						calorie_togo.setText((int)(act_calories - calories) + "");
 						calorie_desc.setText("calories above budget");
 
 					} else {
 						calorie_img.setImageResource(R.drawable.green_arrow);
-						calorie_togo.setText((calories - act_calories) + "");
+						calorie_togo.setText((int)(calories - act_calories) + "");
 						calorie_desc.setText("calories under budget");
 					}
 
 					if (act_sodium > sodium) {
 						sodium_img.setImageResource(R.drawable.red_arrow);
-						sodium_togo.setText((act_sodium - sodium) + "");
+						sodium_togo.setText((int)(act_sodium - sodium) + "");
 						sodium_desc.setText("mg sodium above budget");
 
 					} else {
 						sodium_img.setImageResource(R.drawable.green_arrow);
-						sodium_togo.setText((sodium - act_sodium) + "");
+						sodium_togo.setText((int)(sodium - act_sodium) + "");
 						sodium_desc.setText("mg sodium under budget");
 					}
 
-					DatabaseHandler.getInstance().updateDesiredScore(
+					if( !in_local ){
+						DatabaseHandler.getInstance().updateDesiredScore(
 							dateFormat.format(new Date()), calories, sodium);
+					}
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

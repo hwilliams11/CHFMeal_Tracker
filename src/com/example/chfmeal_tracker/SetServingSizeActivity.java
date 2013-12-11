@@ -95,7 +95,7 @@ public class SetServingSizeActivity extends Activity {
 				
 				Intent intent = new Intent(SetServingSizeActivity.this,HistoryLogActivity.class);
 				startActivity(intent);
-				
+				finish();
 				
 			}
 		});		

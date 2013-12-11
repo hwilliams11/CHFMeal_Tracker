@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="17" />
 
     <application
@@ -31,27 +31,28 @@
             android:label="@string/title_activity_search_food" >
         </activity>
         <activity
-            android:name="com.example.chfmeal_tracker.SetServingSizeActivity"
-            android:label="@string/title_activity_set_serving_size" >
-        </activity>
-        <activity
-            android:name="com.example.chfmeal_tracker.HistoryLogActivity"
-            android:label="@string/title_activity_history_log" >
-        </activity>
-        <activity
-            android:name="com.example.chfmeal_tracker.GraphActivity"
-            android:label="@string/title_activity_graph" >
-        </activity>
-        <activity
-            android:name="com.example.chfmeal_tracker.HistoryTabActivity"
-            android:label="@string/title_activity_tab" >
-        </activity>
-        <activity
-            android:name="com.example.chfmeal_tracker.DayActivity"
-            android:label="@string/title_activity_day" >
-        </activity>
+             android:name="com.example.chfmeal_tracker.SetServingSizeActivity"
+             android:label="@string/title_activity_set_serving_size" >
+         </activity>
+         <activity
+             android:name="com.example.chfmeal_tracker.HistoryLogActivity"
+             android:label="@string/title_activity_history_log" >
+         </activity>
+         <activity
+             android:name="com.example.chfmeal_tracker.GraphActivity"
+             android:label="@string/title_activity_graph" >
+         </activity>
+         <activity
+             android:name="com.example.chfmeal_tracker.HistoryTabActivity"
+             android:label="@string/title_activity_tab" >
+         </activity>
+         <activity
+             android:name="com.example.chfmeal_tracker.DayActivity"
+             android:label="@string/title_activity_day" >
+         </activity>
+         <activity android:name="com.example.chfmeal_tracker.ShowScoreVisualization" 
+             android:label="@string/title_show_score_visualization">
+         </activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
+	<uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

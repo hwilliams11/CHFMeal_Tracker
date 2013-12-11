@@ -308,7 +308,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				cursor.getDouble(8), cursor.getDouble(9), cursor.getString(10),
 				cursor.getDouble(11), cursor.getString(12));
 		
-		Log.d("mydebug","gmwt2: "+cursor.getDouble(9));
+		Log.d("mydebug","gmwt1: "+cursor.getDouble(9));
+		Log.d("mydebug","gmwt2: "+cursor.getDouble(11));
 		Log.d("mydebug","Here in create food item: "+food);
 		/*
 		 * Food(int _NDB_No, String _food_name, double _calories,double _protein_g,
@@ -480,8 +481,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		Meal meal = new Meal(cursor.getString(0), cursor.getString(1),
 				cursor.getDouble(2), Meal.getMealType(cursor.getInt(3)),
 				cursor.getDouble(4), cursor.getDouble(5));
-		Log.d("mydebug", "In createMealItem caloire: " + meal.calories);
-		Log.d("mydebug", "In createMealItem sodium: " + meal.sodium);
+		Log.d("mydebug", "number: "+cursor.getString(0));
+		Log.d("mydebug", "In createMealItemS caloire: " + meal.calories);
+		Log.d("mydebug", "In createMealItemS sodium: " + meal.sodium);
 		return meal;
 
 	}

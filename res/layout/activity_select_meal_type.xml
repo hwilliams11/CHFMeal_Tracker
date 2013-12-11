@@ -6,9 +6,10 @@
     android:padding="10dp">
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/mealTypeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="25dp"
         android:text="Select meal type" />
 
     <TableLayout
@@ -22,6 +23,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:background="@drawable/cell_shape"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:clickable="true"
             android:paddingLeft="10dp" >
 
             <TextView
@@ -30,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:drawableLeft="@drawable/breakfast_icon"
+                android:textSize="20dp"
                 android:drawablePadding="5dp"
                 android:text="Breakfast" />
 
@@ -39,7 +44,11 @@
             android:id="@+id/lunchTableRow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/cell_shape" 
+            android:background="@drawable/cell_shape"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:clickable="true" 
+            android:textSize="20dp"
             android:paddingLeft="10dp" >
 
             <TextView
@@ -49,6 +58,7 @@
                 android:gravity="center_vertical"
                 android:drawableLeft="@drawable/lunch_icon"
                 android:drawablePadding="5dp"
+                android:textSize="20dp"
                 android:text="Lunch" />
 
         </TableRow>
@@ -57,7 +67,10 @@
             android:id="@+id/dinnerTableRow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/cell_shape" 
+            android:background="@drawable/cell_shape"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:clickable="true" 
             android:paddingLeft="10dp">
 
             <TextView
@@ -67,6 +80,7 @@
                 android:gravity="center_vertical"
                 android:drawableLeft="@drawable/dinner_icon"
                 android:drawablePadding="5dp"
+                android:textSize="20dp"
                 android:text="Dinner" />
 
         </TableRow>
@@ -75,7 +89,10 @@
             android:id="@+id/snackTableRow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/cell_shape"  
+            android:background="@drawable/cell_shape"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:clickable="true"  
             android:paddingLeft="10dp">
 
             <TextView
@@ -84,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/snack_icon"
                 android:gravity="center_vertical"
+                android:textSize="20dp"
                 android:drawablePadding="5dp"
                 android:text="Snack" />
 

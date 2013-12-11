@@ -1,5 +1,7 @@
 package com.example.chfmeal_tracker;
 
+import android.util.Log;
+
 public class Food {
 	// private variables
 	int _NDB_No;
@@ -54,6 +56,7 @@ public class Food {
 		this._gmwt1_desc = _gmwt1_desc;
 		this._gmwt2 = _gmwt2;
 		this._gmwt2_desc = _gmwt2_desc;
+		Log.d("mydebug","in constructor: "+this);
 	}
 
 	public Food(int _NDB_No, String _food_name, double _water_g,
@@ -77,6 +80,8 @@ public class Food {
 		this._gmwt1_desc = _gmwt1_desc;
 		this._gmwt2 = _gmwt2;
 		this._gmwt2_desc = _gmwt2_desc;
+		
+		
 	}
 	public Food(String[]data){
 		
@@ -212,7 +217,7 @@ public class Food {
 				+ ", _water_g=" + _water_g + ", _calories=" + _calories
 				+ ", _protein_g=" + _protein_g + ", _carbohydrate_g="
 				+ _carbohydrate_g + ", _fiber_g=" + _fiber_g + ", _sugar_g="
-				+ _sugar_g + ", _gmwt2="+_gmwt2+"]";
+				+ _sugar_g + ", _gmwt1="+_gmwt1+", _gmwt2="+_gmwt2+"]";
 	}
 
 }
