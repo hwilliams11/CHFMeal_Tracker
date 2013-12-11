@@ -25,6 +25,14 @@ public class SetServingSizeActivity extends Activity {
 	private Button addFoodButton;
 	private MealType mealType;
 	private DatabaseHandler dh;
+	TextView energyView;
+	TextView fiberView;
+	TextView carbView;
+	TextView proteinView;
+	TextView sugarView;
+	TextView sodiumView;
+	TextView cholesterolView;
+	
 	
 	Food food;
 	Integer numServings;
@@ -36,6 +44,13 @@ public class SetServingSizeActivity extends Activity {
 		nutritionTextView = (TextView)findViewById(R.id.nutritionFactsTextView);
 		numServingsEditText = (EditText)findViewById(R.id.numServingsEditText);
 		addFoodButton = (Button)findViewById(R.id.addFoodButton);
+		energyView = (TextView)findViewById(R.id.energy_field);
+		fiberView = (TextView)findViewById(R.id.fiber_field);
+		carbView = (TextView)findViewById(R.id.carb_field);
+		proteinView = (TextView)findViewById(R.id.protein_field);
+		sugarView = (TextView)findViewById(R.id.sugar_field);
+		sodiumView = (TextView)findViewById(R.id.sodium_field);
+		cholesterolView = (TextView)findViewById(R.id.cholesterol_field);
 		
 		int foodId = getIntent().getExtras().getInt("foodId");
 		int num = getIntent().getExtras().getInt("mealType");
@@ -85,7 +100,13 @@ public class SetServingSizeActivity extends Activity {
 				Meal m = new Meal(food.get_NDB_No()+"",date,numServings,mealType);
 				Log.d("mydebug",m.toString());
 				
-				double scale = numServings*(food.get_gmwt1()+food.get_gmwt2())/100.0;
+				double wt;
+				if( food.get_gmwt2()==0 )
+					wt = food.get_gmwt2();
+				else
+					wt = food.get_gmwt1();
+				
+				double scale = numServings*wt/100.0;
 				double calories = food.get_calories()*scale;
 				double sodium = food.get_sodium_mg()*scale;
 				
@@ -113,7 +134,13 @@ public class SetServingSizeActivity extends Activity {
 		if( food!= null ){
 			Log.d("mydebug","gmwt1: "+food.get_gmwt1());
 			Log.d("mydebug","gmwt2: "+food.get_gmwt2());
-			double scale = numServings*(food.get_gmwt1()+food.get_gmwt2())/100.0;
+			double wt;
+			if( food.get_gmwt2()==0 )
+				wt = food.get_gmwt1();
+			else
+				wt = food.get_gmwt2();
+			
+			double scale = numServings*wt/100.0;
 			Log.d("mydebug","scale: "+scale);
 			
 			double numCalories = (food.get_calories()*scale);
@@ -125,7 +152,7 @@ public class SetServingSizeActivity extends Activity {
 			double fiber = (food.get_fiber_g()*scale);
 			
 			DecimalFormat fmt = new DecimalFormat("#.00");
-			
+			/*
 			String nutritionFacts = "Energy (kcal): "+fmt.format(numCalories)+"\n"+
 					"Carbohydrates (g): "+fmt.format(carb)+"\n"+
 					"Protein (g): "+fmt.format(protein)+"\n"+
@@ -136,6 +163,15 @@ public class SetServingSizeActivity extends Activity {
 					
 			
 			nutritionTextView.setText(nutritionFacts);
+			*/
+			
+			energyView.setText(fmt.format(numCalories));
+			carbView.setText(fmt.format(carb));
+			proteinView.setText(fmt.format(protein));
+			fiberView.setText(fmt.format(fiber));
+			sugarView.setText(fmt.format(sugar));
+			sodiumView.setText(fmt.format(sodium));
+			cholesterolView.setText(fmt.format(cholest));
 		}
 				
 	}

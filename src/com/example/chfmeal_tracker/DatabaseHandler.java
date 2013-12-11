@@ -654,4 +654,32 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		Log.d("dbdebug", "no match found in db");
 		return null;
 	}
+
+	public void addMealFromFile(Meal meal) {
+		// TODO Auto-generated method stub
+		
+		// get the calorie and sodium from the food table
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+
+		values.put(KEY_ID, meal.get_NDB_No());
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Log.d("mydebug", dateFormat.format(new Date()));
+		
+		values.put(KEY_DATE, dateFormat.format(new Date()));
+		values.put(KEY_SERVING_SIZE, meal._Serving);
+		values.put(KEY_MEAL_TYPE, meal.get_Type().getInt() + "");
+		values.put(KEY_MEAL_SYNCED, 0 + "");
+		values.put(KEY_MEAL_CALORIES, meal.getCalories());
+		values.put(KEY_MEAL_SODIUM, meal.getSodium());
+		
+		Log.d("mydebug", "mealtype: " + meal.get_Type());
+		// Inserting Row
+		db.insert(TABLE_MEAL, null, values);
+		db.close();
+		Log.d("mydebug", "added meal: " + meal);
+		
+	}
 }

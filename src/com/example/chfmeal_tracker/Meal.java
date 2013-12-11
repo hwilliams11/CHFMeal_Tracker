@@ -1,5 +1,7 @@
 package com.example.chfmeal_tracker;
 
+import java.text.SimpleDateFormat;
+
 public class Meal {
 	// private variables
 
@@ -71,6 +73,16 @@ public class Meal {
 		this._Type = _Type;
 		this._Serving = _Serving;
 		this._Date = _Date;
+	}
+
+	public Meal(String[] row) {
+		
+		this._NDB_No = Integer.parseInt(row[0]);
+		this._Date = row[1];
+		this._Serving = Double.parseDouble( row[2] );
+		this._Type = Meal.getMealType( Integer.parseInt(row[3]) );
+		this.calories = Double.parseDouble( row[4] );
+		this.sodium = Double.parseDouble( row[5] );
 	}
 
 	public String getFood_name() {

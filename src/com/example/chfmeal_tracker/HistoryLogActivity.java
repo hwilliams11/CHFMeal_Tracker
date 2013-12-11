@@ -36,6 +36,8 @@ public class HistoryLogActivity extends Activity {
 		HistoryListAdapter adapter = new HistoryListAdapter(this,history,dh);
 		lv.setAdapter(adapter);
 		dh.getMeals(history);
+		
+		
 	}
 
 	@Override
