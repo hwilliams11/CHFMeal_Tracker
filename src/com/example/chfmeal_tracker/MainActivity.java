@@ -26,7 +26,6 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -76,7 +75,6 @@ public class MainActivity extends Activity {
 		sodium_img = (ImageView) findViewById(R.id.sodium_arrow);
 		// this line reads and stores database to phone, uncomment to store.
 		//addFoodFromFile(this, dh);
-		//addMealsFromFile(this,dh);
 
 		new SyncMealItems().execute();
 		new GetDesiredScores()
@@ -139,31 +137,6 @@ public class MainActivity extends Activity {
 		}
 
 	}
-	private void addMealsFromFile(Context context, DatabaseHandler dh) {
-
-		String query = "DELETE * FROM meals";
-		dh.getWritableDatabase().rawQuery(query, null);
-		
-		Scanner scan = null;
-		Log.d("mydebug", "inserting from file");
-		try {
-			scan = new Scanner(context.getAssets().open("dummy_meals.csv"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		scan.nextLine();
-
-		while (scan.hasNext()) {
-
-			String[] row = scan.nextLine().split(",");
-			Meal meal = new Meal(row);
-			Log.d("mydebug", "new food: " + meal);
-			dh.addMealFromFile(meal);
-		}
-
-	}
-
 	private class GetDesiredScores extends AsyncTask<String, Void, String> {
 		
 		boolean in_local=false;

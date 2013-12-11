@@ -14,7 +14,7 @@
 	$response = array();
 	
 	for($i=0;$i<count($json);$i++){
-		//echo "in loop";
+		echo "in loop";
 		$success = add_meal_to_db($json[$i],$file);
 		$res = array();
 		$res["_NDB_No"] = $json[$i]["_NDB_No"];
@@ -37,7 +37,7 @@
 	// Check connection
 	if (mysqli_connect_errno())
 	{
-		//echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 	$patientID=3;
 	$query = "SELECT SUM(calories) AS calories_sum, SUM(sodium) AS sodium_sum from meals where creation_date='$_date' and patientID=$patientID";
@@ -51,8 +51,8 @@
 	$act_sodium=0;		
 	if($row = mysqli_fetch_array($result))
 	{
-	  //echo $row["calories_sum"]." ".$row["sodium_sum"];
-	  //echo "<br>";
+	  echo $row["calories_sum"]." ".$row["sodium_sum"];
+	  echo "<br>";
 	  $act_calories=$row["calories_sum"];
 	  $act_sodium=$row["sodium_sum"];
 	} 
@@ -67,8 +67,8 @@
 	$desired_sodium=10000000;		
 	if($row = mysqli_fetch_array($result))
 	{
-	  //echo $row["calories"]." ".$row["sodium"];
-	  //echo "<br>";
+	  echo $row["calories"]." ".$row["sodium"];
+	  echo "<br>";
 	  $desired_calories=$row["calories"];
 	  $desired_sodium=$row["sodium"];
 	} 
@@ -79,15 +79,11 @@
 		$msg_body="";
 		if($desired_calories<$act_calories){
 			$msg_body=$msg_body."Calories intake is above budget $desired_calories calories on [$_date] for ".($act_calories-$desired_calories)." calories.";
-			$content .= $msg_body;
-			file_put_contents('output.txt', $content);
-			//echo $msg_body;
+			echo $msg_body;
 		}
 		if($desired_sodium<$act_sodium){
 			$msg_body=$msg_body."Sodium intake is above budget $desired_sodium mg on [$_date] for ".($act_sodium-$desired_sodium)." mg.";
-			$content .= $msg_body;
-			file_put_contents('output.txt', $content);
-			//echo $msg_body;
+			echo $msg_body;
 		}
 		send_meal_alert($RecipientID,$PatientID,$msg_body);
 	}
@@ -97,11 +93,8 @@
 		$data=array("RecipientID" => $RecipientID,"PatientID"=>$PatientID,"Body"=>$msg_body,"Subject"=>"Meal Alert","Priority"=>"high");
 
 		$result=CallAPI($method, $url, json_encode($data));
-		
-		$content = file_get_contents('output.txt');
-		$content .= $result;
-		file_put_contents('output.txt', $content);
-		//echo $result;
+
+		echo $result;
 	}
 	function CallAPI($method, $url, $data = false)
 	{
@@ -145,7 +138,7 @@
 		// Check connection
 		if (mysqli_connect_errno())
 		  {
-		  //echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		  }
 
 		// mysql inserting a new row
@@ -154,9 +147,10 @@
 		file_put_contents($file, $content);
 		$result = mysqli_query($con,$query);
 		
+
 		mysqli_close($con);
-		
-		if ($result==true) {
+
+		if ($result) {
 			return 1;
 		} else {
 			return 0;

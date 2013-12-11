@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 import android.app.Activity;
 import android.app.DialogFragment;
@@ -39,11 +40,6 @@ public class ShowScoreVisualization extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_score_visualization);
 		
-		getScoreData();
-		
-	}
-
-	private void getScoreData() {
 		start = 0;
 		dh = DatabaseHandler.getInstance();
 		scores = dh.getAllScores();
@@ -75,10 +71,11 @@ public class ShowScoreVisualization extends Activity {
 				idealSodium[i] = new GraphViewData( i, Double.parseDouble( map.get(DatabaseHandler.IDEAL_CALORIES) ) );
 				dates[i]=map.get(DatabaseHandler.KEY_CREATION_DATE);
 				*/
-				actualCalories[i] = new GraphViewData( i,20*Math.random() );
-				idealCalories[i] = new GraphViewData( i,20*Math.random() );
-				actualSodium[i] = new GraphViewData( i,20*Math.random() );
-				idealSodium[i] = new GraphViewData( i,20*Math.random() );
+				Random rand = new Random();
+				actualCalories[i] = new GraphViewData( i,1800+rand.nextInt(200) );
+				idealCalories[i] = new GraphViewData( i,1900 );
+				actualSodium[i] = new GraphViewData( i,1800+rand.nextInt(300) );
+				idealSodium[i] = new GraphViewData( i,2000 );
 				
 			}
 			//sort the dates;
@@ -134,6 +131,7 @@ public class ShowScoreVisualization extends Activity {
             layout = (LinearLayout) findViewById(R.id.graph2);  
             layout.addView(graphView2); 
 		}
+		
 	}
 
 	@Override

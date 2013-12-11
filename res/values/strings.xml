@@ -12,5 +12,6 @@
     <string name="title_activity_tab">TabActivity</string>
     <string name="title_activity_day">DayActivity</string>
     <string name="title_show_score_visualization">ShowScoreVisualizationActivity</string>
+    <string name="title_activity_add_meals">AddMeals</string>
 
 </resources>

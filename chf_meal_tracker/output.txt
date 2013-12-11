@@ -1,351 +1,65 @@
+Sodium intake is above budget 2000 mg on [2013-12-11] for 539.2735 mg.
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 3, 6641,'2013-12-11' ,1,0, 196.86, 195.84)
+[{"_NDB_No":6641,"_Type":0,"_Date":"2013-12-11","success":1}]
 
-SELECT * FROM `scores` WHERE creation_date=2012-12-10 AND patientID=0
+SELECT SUM(calories) AS calories_sum, SUM(sodium) AS sodium_sum from meals where creation_date='2013-12-11' and patientID=3
 
-SELECT * FROM `scores` WHERE creation_date=2012-12-03 AND patientID=0
+SELECT calories, sodium from scores where creation_date='2013-12-11' and patientID=3
+Sodium intake is above budget 2000 mg on [2013-12-11] for 539.2735 mg.Sodium intake is above budget 2000 mg on [2013-12-11] for 539.2735 mg.
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 3, 6641,'2013-12-11' ,1,0, 196.86, 195.84)
+[{"_NDB_No":6641,"_Type":0,"_Date":"2013-12-11","success":1}]
 
-SELECT * FROM `scores` WHERE creation_date=2012-12-04 AND patientID=0
+SELECT SUM(calories) AS calories_sum, SUM(sodium) AS sodium_sum from meals where creation_date='2013-12-11' and patientID=3
 
-SELECT * FROM `scores` WHERE creation_date=2012-12-05 AND patientID=0
-[[],[],[],[]]
+SELECT calories, sodium from scores where creation_date='2013-12-11' and patientID=3
+Sodium intake is above budget 2000 mg on [2013-12-11] for 539.2735 mg."{\"MessageID\":5351}"
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 3, 1344,'2013-12-11' ,1,2, 200.9, 840.35)
+[{"_NDB_No":1344,"_Type":2,"_Date":"2013-12-11","success":1}]
 
-SELECT * FROM `scores` WHERE creation_date="2013-12-10" AND patientID=0
+SELECT SUM(calories) AS calories_sum, SUM(sodium) AS sodium_sum from meals where creation_date='2013-12-11' and patientID=3
 
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+SELECT calories, sodium from scores where creation_date='2013-12-11' and patientID=3
+Sodium intake is above budget 2000 mg on [2013-12-11] for 1379.6235 mg."{\"MessageID\":5352}"
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 3, 1694,'2013-12-11' ,1,1, 36.5, 487)
+[{"_NDB_No":1694,"_Type":1,"_Date":"2013-12-11","success":1}]
 
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+SELECT SUM(calories) AS calories_sum, SUM(sodium) AS sodium_sum from meals where creation_date='2013-12-11' and patientID=3
 
-2013-12-03 1500 2000 0
+SELECT calories, sodium from scores where creation_date='2013-12-11' and patientID=3
+Sodium intake is above budget 2000 mg on [2013-12-11] for 1866.6235 mg."{\"MessageID\":5353}"
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 3, 6515,'2013-12-11' ,1,2, 255.11, 472.39)
+[{"_NDB_No":6515,"_Type":2,"_Date":"2013-12-11","success":1}]
 
+SELECT SUM(calories) AS calories_sum, SUM(sodium) AS sodium_sum from meals where creation_date='2013-12-11' and patientID=3
 
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+SELECT calories, sodium from scores where creation_date='2013-12-11' and patientID=3
+Calories intake is above budget 2000 calories on [2013-12-11] for 106.9715 calories.Calories intake is above budget 2000 calories on [2013-12-11] for 106.9715 calories.Sodium intake is above budget 2000 mg on [2013-12-11] for 2339.0135 mg."{\"MessageID\":5354}"
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 3, 4496,'2013-12-11' ,1,3, 93, 198)
+[{"_NDB_No":4496,"_Type":3,"_Date":"2013-12-11","success":1}]
 
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
+SELECT SUM(calories) AS calories_sum, SUM(sodium) AS sodium_sum from meals where creation_date='2013-12-11' and patientID=3
 
-2013-12-04 1500 2000 0
+SELECT calories, sodium from scores where creation_date='2013-12-11' and patientID=3
+Calories intake is above budget 2000 calories on [2013-12-11] for 199.9715 calories.Calories intake is above budget 2000 calories on [2013-12-11] for 199.9715 calories.Sodium intake is above budget 2000 mg on [2013-12-11] for 2537.0135 mg."{\"MessageID\":5355}"
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 3, 7211,'2013-12-11' ,1,0, 234, 1167)
 
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 3, 18103,'2013-12-11' ,1,0, 32.2, 59)
 
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 3, 21274,'2013-12-11' ,1,2, 234, 1167)
 
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 3, 21276,'2013-12-11' ,1,2, 32.2, 59)
 
-2013-12-05 1200 2200 0
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 3, 22522,'2013-12-11' ,1,1, 234, 1167)
+[{"_NDB_No":7211,"_Type":0,"_Date":"2013-12-11","success":1},{"_NDB_No":18103,"_Type":0,"_Date":"2013-12-11","success":1},{"_NDB_No":21274,"_Type":2,"_Date":"2013-12-11","success":1},{"_NDB_No":21276,"_Type":2,"_Date":"2013-12-11","success":1},{"_NDB_No":22522,"_Type":1,"_Date":"2013-12-11","success":1}]
 
-[[],{"Hello":"bye"},{"Hello":"bye"},{"Hello":"bye"}]
+SELECT SUM(calories) AS calories_sum, SUM(sodium) AS sodium_sum from meals where creation_date='2013-12-11' and patientID=3
 
-SELECT * FROM `scores` WHERE creation_date="2013-12-10" AND patientID=0
+SELECT calories, sodium from scores where creation_date='2013-12-11' and patientID=3
+"The remote server returned an error: (400) Bad Request.System   at System.Net.HttpWebRequest.GetResponse()\u000d\u000a   at testRestful.ClinicalSummary.MakeRequest(String requestUrl, String json, Type type) in c:\\Users\\psmm3\\Documents\\Visual Studio 2012\\Projects\\testRestful\\testRestful\\HIE.svc.cs:line 200""The remote server returned an error: (400) Bad Request.System   at System.Net.HttpWebRequest.GetResponse()\u000d\u000a   at testRestful.ClinicalSummary.MakeRequest(String requestUrl, String json, Type type) in c:\\Users\\psmm3\\Documents\\Visual Studio 2012\\Projects\\testRestful\\testRestful\\HIE.svc.cs:line 200"
+INSERT INTO `meals` ( patientID, NDB_No, creation_date, serving_size, meal_type, calories, sodium ) VALUES ( 3, 429,'2013-12-11' ,1,3, 125.307, 90.4365)
+[{"_NDB_No":429,"_Type":3,"_Date":"2013-12-11","success":1}]
 
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
+SELECT SUM(calories) AS calories_sum, SUM(sodium) AS sodium_sum from meals where creation_date='2013-12-11' and patientID=3
 
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-2013-12-03 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-2013-12-04 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-2013-12-05 1200 2200 0
-
-[[],{"Hello":"bye"},{"Hello":"bye"},{"Hello":"bye"}]
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-10" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-2013-12-03 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-2013-12-04 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-2013-12-05 1200 2200 0
-
-[[],{"patient":"0","date":"2013-12-03","calorie":null,"sodium":null},{"patient":"0","date":"2013-12-04","calorie":null,"sodium":null},{"patient":"0","date":"2013-12-05","calorie":null,"sodium":null}]
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-10" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-2013-12-03 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-2013-12-04 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-2013-12-05 1200 2200 0
-
-[[],{"patient":"0","date":"2013-12-03","calories":"1500","sodium":null},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":null},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":null}]
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-10" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-2013-12-03 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-2013-12-04 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-2013-12-05 1200 2200 0
-
-[[],{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-10" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-2013-12-03 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-2013-12-04 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-2013-12-05 1200 2200 0
-
-[[],{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-10" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-2013-12-03 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-2013-12-04 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-2013-12-05 1200 2200 0
-
-[[],{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-10" AND patientID=0
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-2013-12-03 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-2013-12-04 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-2013-12-05 1200 2200 0
-
-[[],{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-12" AND patientID=0
-
-2013-12-12 1200 2200 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-2013-12-03 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-2013-12-04 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-2013-12-05 1200 2200 0
-
-[{"patient":"0","date":"2013-12-12","calories":"1200","sodium":"2200"},{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-12" AND patientID=0
-
-2013-12-12 1200 2200 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-2013-12-03 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-2013-12-04 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-2013-12-05 1200 2200 0
-
-[{"patient":"0","date":"2013-12-12","calories":"1200","sodium":"2200"},{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-12" AND patientID=0
-
-2013-12-12 1200 2200 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-2013-12-03 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-2013-12-04 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-2013-12-05 1200 2200 0
-
-[{"patient":"0","date":"2013-12-12","calories":"1200","sodium":"2200"},{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-12" AND patientID=0
-
-2013-12-12 1200 2200 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-2013-12-03 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-2013-12-04 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-2013-12-05 1200 2200 0
-
-[{"patient":"0","date":"2013-12-12","calories":"1200","sodium":"2200"},{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-12" AND patientID=0
-
-2013-12-12 1200 2200 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-2013-12-03 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-2013-12-04 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-2013-12-05 1200 2200 0
-
-[{"patient":"0","date":"2013-12-12","calories":"1200","sodium":"2200"},{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-12" AND patientID=0
-
-2013-12-12 1200 2200 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-2013-12-03 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-2013-12-04 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-2013-12-05 1200 2200 0
-
-[{"patient":"0","date":"2013-12-12","calories":"1200","sodium":"2200"},{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-12" AND patientID=0
-
-2013-12-12 1200 2200 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-2013-12-03 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-2013-12-04 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-2013-12-05 1200 2200 0
-
-[{"patient":"0","date":"2013-12-12","calories":"1200","sodium":"2200"},{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-12" AND patientID=0
-
-2013-12-12 1200 2200 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-03" AND patientID=0
-
-2013-12-03 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-04" AND patientID=0
-
-2013-12-04 1500 2000 0
-
-
-SELECT * FROM `scores` WHERE creation_date="2013-12-05" AND patientID=0
-
-2013-12-05 1200 2200 0
-
-[{"patient":"0","date":"2013-12-12","calories":"1200","sodium":"2200"},{"patient":"0","date":"2013-12-03","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-04","calories":"1500","sodium":"2000"},{"patient":"0","date":"2013-12-05","calories":"1200","sodium":"2200"}]
+SELECT calories, sodium from scores where creation_date='2013-12-11' and patientID=3
+"The remote server returned an error: (400) Bad Request.System   at System.Net.HttpWebRequest.GetResponse()\u000d\u000a   at testRestful.ClinicalSummary.MakeRequest(String requestUrl, String json, Type type) in c:\\Users\\psmm3\\Documents\\Visual Studio 2012\\Projects\\testRestful\\testRestful\\HIE.svc.cs:line 200""The remote server returned an error: (400) Bad Request.System   at System.Net.HttpWebRequest.GetResponse()\u000d\u000a   at testRestful.ClinicalSummary.MakeRequest(String requestUrl, String json, Type type) in c:\\Users\\psmm3\\Documents\\Visual Studio 2012\\Projects\\testRestful\\testRestful\\HIE.svc.cs:line 200""The remote server returned an error: (400) Bad Request.System   at System.Net.HttpWebRequest.GetResponse()\u000d\u000a   at testRestful.ClinicalSummary.MakeRequest(String requestUrl, String json, Type type) in c:\\Users\\psmm3\\Documents\\Visual Studio 2012\\Projects\\testRestful\\testRestful\\HIE.svc.cs:line 200""The remote server returned an error: (400) Bad Request.System   at System.Net.HttpWebRequest.GetResponse()\u000d\u000a   at testRestful.ClinicalSummary.MakeRequest(String requestUrl, String json, Type type) in c:\\Users\\psmm3\\Documents\\Visual Studio 2012\\Projects\\testRestful\\testRestful\\HIE.svc.cs:line 200""The remote server returned an error: (400) Bad Request.System   at System.Net.HttpWebRequest.GetResponse()\u000d\u000a   at testRestful.ClinicalSummary.MakeRequest(String requestUrl, String json, Type type) in c:\\Users\\psmm3\\Documents\\Visual Studio 2012\\Projects\\testRestful\\testRestful\\HIE.svc.cs:line 200"

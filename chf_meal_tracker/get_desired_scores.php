@@ -1,87 +1,50 @@
-<?php
-
-	require_once __DIR__ . '/db_connect.php';
+<?php 
 	
-	$json_string = $_POST['message']; 
-    $request_info= json_decode($json_string,true);
-	$jst = print_r($request_info,TRUE);
-	$file = 'output.txt';
-	
+    #Ensure that the client has provided a value for "FirstNameToSearch" 
+    if (isset($_POST["patientID"])&& $_POST["patientID"]!= ""){ 
+         
+        #Setup variables 
+        $patientID = $_POST["patientID"]; 
+        $calorie_budget=0;
+		$sodium_budget=0; 
+		switch ($patientID) {
+			case "1":
+				$calorie_budget=2000;
+				$sodium_budget=2000;
+				break;
+			case "2":
+				$calorie_budget=2000;
+				$sodium_budget=2000;
+				break;
+			case "3":
+				$calorie_budget=2000;
+				$sodium_budget=2000;
+				break;
+		} 
+		#update server db
 		
-	$db = new DB_CONNECT();
-	
+		#insert new record to scores table. 
+		$con=mysqli_connect("hit4.nimbus.cip.gatech.edu:3306","group1","group1","healthit");
+		// Check connection
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
 
-	$response = array();
-	$test = array();
-	//$test["Hello"]="Bye";
-	//array_push($response,$test);
-	
+		$result = mysqli_query($con,"INSERT INTO `scores` (creation_date, calories, sodium, patientID) VALUES( CURDATE(),$calorie_budget,$sodium_budget,$patientID )");
 
-	if( count($request_info)> 0 ){
-	
-		$calories = array();
-		$sodium = array();
-	
+
+		mysqli_close($con);		
 		
-		for($i=0;$i<count($request_info);$i++){
+        #Build the result array (Assign keys to the values) 
+        $result_data = array( 
+            'calorie_budget' => $calorie_budget, 
+            'sodium_budget' => $sodium_budget, 
+            ); 
 
-			$res=array();
-			//$res["patient"] = $request_info["patient"]
-			//$res["date"]=$request_info["date"];
-			//$res["calories"]=$calories["date"];
-			//$res["sodium"]=$calories["sodium"];
-			
-			$res = get_scores($request_info[$i],$file);
-			
-			array_push($response,$res);
-		}
-	}
-	$content = file_get_contents($file);
-    $js =  json_encode($response);
-	$content .= print_r($js,TRUE)."\r\n";
-	file_put_contents($file, $content);
-	
-	echo $js;
-
-	
-	function get_scores($request_info,$file){
-	
-	
-		$res = array();
-		$id = $request_info["patientID"];
-		
-		$date = DateTime::createFromFormat('Y-m-d', $request_info["date"])->format('Y-m-d');
-			
-		
-		$query = "SELECT * FROM `scores` WHERE creation_date=\"$date\" AND patientID=$id";
-		add_to_file($file,$query);
-		
-		$result = mysql_query($query);
-
-		if($result){
-			if (mysql_num_rows($result) > 0) {
-			
-				$row = mysql_fetch_assoc($result);
-				$data = $row['creation_date']." ".$row['calories']." ".$row['sodium']." ".$row['patientID']."\n";
-
-				add_to_file($file,$data);
-				
-				$res["patient"] = $id;
-				$res["date"]=$date;
-				$res["calories"]=$row["calories"];
-				$res["sodium"]=$row["sodium"];
-			}
-		}
-		
-	
-		return $res;
-	}
-	function add_to_file($file,$new_content){
-	
-		$content = file_get_contents($file);
-		$content .= "\n$new_content\n";
-		file_put_contents($file, $content);
-		
-	}
-
+        #Output the JSON data 
+        echo json_encode($result_data);  
+    }else{ 
+        echo "Could not complete query. Missing parameter";  
+    } 
 ?>
