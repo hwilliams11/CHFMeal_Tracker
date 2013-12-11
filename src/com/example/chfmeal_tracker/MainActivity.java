@@ -94,7 +94,7 @@ public class MainActivity extends Activity {
 			public void onClick(View arg0) {
 
 				Intent intent = new Intent(MainActivity.this,
-						HistoryLogActivity.class);
+						HistoryTabActivity.class);
 				startActivity(intent);
 
 			}

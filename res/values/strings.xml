@@ -8,5 +8,8 @@
     <string name="title_activity_set_serving_size">SetServingSizeActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_history_log">Log</string>
+    <string name="title_activity_graph">graph</string>
+    <string name="title_activity_tab">TabActivity</string>
+    <string name="title_activity_day">DayActivity</string>
 
 </resources>
