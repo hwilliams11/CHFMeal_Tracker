@@ -35,15 +35,19 @@ public class Food {
 	    this._calories = _calories;
 	    this._sodium_mg = _sodium_mg;
 	}
-	public Food(int _NDB_No, String _food_name, double _calories,double _protein_g,
-			double _carbohydrate_g,double _sodium_mg, double _cholesterol_mg, double _gmwt1, String _gmwt1_desc,
+	public Food(int _NDB_No, String _food_name, double _calories,double _protein_g,double _carbohydrate_g,double _fiber_g,
+			double _sugar_g,double _sodium_mg, double _cholesterol_mg, double _gmwt1, String _gmwt1_desc,
 			double _gmwt2, String _gmwt2_desc) {
+		
+
 		super();
 		this._NDB_No = _NDB_No;
 		this._food_name = _food_name;
 		this._calories = _calories;
 		this._protein_g = _protein_g;
 		this._carbohydrate_g = _carbohydrate_g;
+		this._fiber_g = _fiber_g;
+		this._sugar_g = _sugar_g;
 		this._sodium_mg = _sodium_mg;
 		this._cholesterol_mg = _cholesterol_mg;
 		this._gmwt1 = _gmwt1;
@@ -208,7 +212,7 @@ public class Food {
 				+ ", _water_g=" + _water_g + ", _calories=" + _calories
 				+ ", _protein_g=" + _protein_g + ", _carbohydrate_g="
 				+ _carbohydrate_g + ", _fiber_g=" + _fiber_g + ", _sugar_g="
-				+ _sugar_g + "]";
+				+ _sugar_g + ", _gmwt2="+_gmwt2+"]";
 	}
 
 }

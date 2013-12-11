@@ -1,5 +1,6 @@
 package com.example.chfmeal_tracker;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -45,7 +46,7 @@ public class SetServingSizeActivity extends Activity {
 		
 		food = dh.getFood(foodId);
 		numServings = Integer.parseInt(numServingsEditText.getText().toString());
-		Log.d("check",food.toString());
+		Log.d("mydebug",food.toString());
 		if( food!= null ){
 		
 			showNutritionFacts();
@@ -80,11 +81,16 @@ public class SetServingSizeActivity extends Activity {
 				
 				
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	            Log.d("mydebug", dateFormat.format(new Date()));
 	            String date = dateFormat.format(new Date());
 				Meal m = new Meal(food.get_NDB_No()+"",date,numServings,mealType);
 				Log.d("mydebug",m.toString());
-				dh.addMeal(m);
+				
+				double scale = numServings*(food.get_gmwt1()+food.get_gmwt2())/100.0;
+				double calories = food.get_calories()*scale;
+				double sodium = food.get_sodium_mg()*scale;
+				
+				dh.addMeal(m,calories,sodium,numServings);
+				
 				new SyncMealItems().execute();
 				
 				Intent intent = new Intent(SetServingSizeActivity.this,HistoryLogActivity.class);
@@ -105,20 +111,29 @@ public class SetServingSizeActivity extends Activity {
 	private void showNutritionFacts(){
 		
 		if( food!= null ){
-			double scale = numServings;
+			Log.d("mydebug","gmwt1: "+food.get_gmwt1());
+			Log.d("mydebug","gmwt2: "+food.get_gmwt2());
+			double scale = numServings*(food.get_gmwt1()+food.get_gmwt2())/100.0;
+			Log.d("mydebug","scale: "+scale);
 			
-			int numCalories = (int)(food.get_calories()*scale);
-			int cholest = (int)(food.get_cholesterol_mg()*scale);
-			int sodium = (int)(food.get_sodium_mg()*scale);
-			int carb = (int)(food.get_carbohydrate_g()*scale);
-			int protein = (int)(food.get_protein_g()*scale);
+			double numCalories = (food.get_calories()*scale);
+			double cholest = (food.get_cholesterol_mg()*scale);
+			double sodium = (food.get_sodium_mg()*scale);
+			double carb = (food.get_carbohydrate_g()*scale);
+			double protein = (food.get_protein_g()*scale);
+			double sugar = (food.get_sugar_g()*scale);
+			double fiber = (food.get_fiber_g()*scale);
 			
-			Log.d("check","carbs: "+food.get_carbohydrate_g());
-			String nutritionFacts = "Calories: "+numCalories+"\n"+
-					"Cholesterol: "+cholest+"\n"+
-					"Sodium: "+sodium+"\n"+
-					"Carb: "+carb+"\n"+
-					"Protein: "+protein+"\n";
+			DecimalFormat fmt = new DecimalFormat("#.00");
+			
+			String nutritionFacts = "Energy (kcal): "+fmt.format(numCalories)+"\n"+
+					"Carbohydrates (g): "+fmt.format(carb)+"\n"+
+					"Protein (g): "+fmt.format(protein)+"\n"+
+					"Fiber (g): "+fmt.format(fiber)+"\n"+
+					"Sugars (g): "+fmt.format(sugar)+"\n"+
+					"Sodium (mg): "+fmt.format(sodium)+"\n"+
+					"Cholesterol (mg):"+fmt.format(cholest)+"\n";
+					
 			
 			nutritionTextView.setText(nutritionFacts);
 		}

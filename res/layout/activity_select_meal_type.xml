@@ -2,40 +2,92 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:text="Select Meal to add for today"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="Select meal type" />
 
-    
-     <ImageButton
-        android:id="@+id/breakfastTextView"
-        android:layout_width="wrap_content"
+    <TableLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/breakfast" />
-     
-      <ImageButton
-        android:id="@+id/lunchTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/lunch" />
-      
-       <ImageButton
-        android:id="@+id/dinnerTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/dinner" />
-       
-        <ImageButton
-        android:id="@+id/snackTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/snacks" />
-    
+        android:layout_gravity="center_vertical" >
+
+        <TableRow
+            android:id="@+id/breakfastTableRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/cell_shape"
+            android:paddingLeft="10dp" >
+
+            <TextView
+                android:id="@+id/breakfastTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:drawableLeft="@drawable/breakfast_icon"
+                android:drawablePadding="5dp"
+                android:text="Breakfast" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/lunchTableRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape" 
+            android:paddingLeft="10dp" >
+
+            <TextView
+                android:id="@+id/lunchTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:drawableLeft="@drawable/lunch_icon"
+                android:drawablePadding="5dp"
+                android:text="Lunch" />
+
+        </TableRow>
+        
+        <TableRow
+            android:id="@+id/dinnerTableRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape" 
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:id="@+id/dinnerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:drawableLeft="@drawable/dinner_icon"
+                android:drawablePadding="5dp"
+                android:text="Dinner" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/snackTableRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape"  
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:id="@+id/snackTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/snack_icon"
+                android:gravity="center_vertical"
+                android:drawablePadding="5dp"
+                android:text="Snack" />
+
+        </TableRow>
+    </TableLayout>
     
 </LinearLayout>

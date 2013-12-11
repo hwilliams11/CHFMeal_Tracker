@@ -39,6 +39,7 @@ public class MainActivity extends Activity {
 
 	private Button addFoodButton;
 	private Button viewHistoryButton;
+	private Button viewScoreHistoryButton;
 	private Activity act;
 	private TextView calorie_budget = null;
 	private TextView sodium_budget = null;
@@ -61,6 +62,7 @@ public class MainActivity extends Activity {
 		DatabaseHandler dh = DatabaseHandler.getInstance(this);
 		addFoodButton = (Button) findViewById(R.id.addFood);
 		viewHistoryButton = (Button) findViewById(R.id.ShowHistory);
+		viewScoreHistoryButton = (Button) findViewById(R.id.viewProgress);
 		calorie_budget = (TextView) findViewById(R.id.desired_calories);
 		sodium_budget = (TextView) findViewById(R.id.desired_sodium);
 		calorie_togo = (TextView) findViewById(R.id.calorie_to_go);
@@ -72,7 +74,7 @@ public class MainActivity extends Activity {
 		calorie_img = (ImageView) findViewById(R.id.calorie_arrow);
 		sodium_img = (ImageView) findViewById(R.id.sodium_arrow);
 		// this line reads and stores database to phone, uncomment to store.
-		// addFoodFromFile(this, dh);
+		//addFoodFromFile(this, dh);
 
 		new SyncMealItems().execute();
 		new GetDesiredScores()
@@ -94,7 +96,18 @@ public class MainActivity extends Activity {
 			public void onClick(View arg0) {
 
 				Intent intent = new Intent(MainActivity.this,
-						HistoryTabActivity.class);
+						HistoryLogActivity.class);
+				startActivity(intent);
+
+			}
+		});
+		viewScoreHistoryButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+
+				Intent intent = new Intent(MainActivity.this,
+						ShowScoreVisualization.class);
 				startActivity(intent);
 
 			}

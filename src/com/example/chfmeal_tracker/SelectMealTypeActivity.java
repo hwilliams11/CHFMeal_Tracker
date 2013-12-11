@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TableRow;
 
 import com.example.chfmeal_tracker.Meal.MealType;
 
@@ -16,20 +17,25 @@ public class SelectMealTypeActivity extends Activity {
 	ImageButton lunch;
 	ImageButton dinner;
 	ImageButton snack;
+	
+	TableRow breakfastRow;
+	TableRow lunchRow;
+	TableRow dinnerRow;
+	TableRow snackRow;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_select_meal_type);
-		breakfast = (ImageButton) findViewById(R.id.breakfastTextView);
-		lunch = (ImageButton) findViewById(R.id.lunchTextView);
-		dinner = (ImageButton) findViewById(R.id.dinnerTextView);
-		snack = (ImageButton) findViewById(R.id.snackTextView);
+		breakfastRow = (TableRow) findViewById(R.id.breakfastTableRow);
+		lunchRow = (TableRow) findViewById(R.id.lunchTableRow);
+		dinnerRow = (TableRow) findViewById(R.id.dinnerTableRow);
+		snackRow = (TableRow) findViewById(R.id.snackTableRow);
 
-		breakfast.setOnClickListener(new AddFoodListener(MealType.BREAKFAST));
-		lunch.setOnClickListener(new AddFoodListener(MealType.LUNCH));
-		dinner.setOnClickListener(new AddFoodListener(MealType.DINNER));
-		snack.setOnClickListener(new AddFoodListener(MealType.SNACK));
+		breakfastRow.setOnClickListener(new AddFoodListener(MealType.BREAKFAST));
+		lunchRow.setOnClickListener(new AddFoodListener(MealType.LUNCH));
+		dinnerRow.setOnClickListener(new AddFoodListener(MealType.DINNER));
+		snackRow.setOnClickListener(new AddFoodListener(MealType.SNACK));
 	}
 
 	@Override

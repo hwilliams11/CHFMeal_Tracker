@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 import android.content.ContentValues;
@@ -14,9 +15,16 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
+	
+	
+	static final String IDEAL_SODIUM = "ideal_sodium";
+	static final String IDEAL_CALORIES = "ideal_calories";
+	static final String ACTUAL_SODIUM = "actual_sodium";
+	static final String ACTUAL_CALORIES = "actual_calories";
+
 	// All Static variables
 	// Database Version
-	private static final int DATABASE_VERSION = 9;
+	private static final int DATABASE_VERSION = 8;
 
 	// Database Name
 	private static final String DATABASE_NAME = "CHFMealTrackerDB";
@@ -51,7 +59,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	// Scores Table Columns names
 	private static final String KEY_IDEAL_CALORIES = "calories";
 	private static final String KEY_IDEAL_SODIUM = "sodium";
-	private static final String KEY_CREATION_DATE = "creation_date";
+	public static final String KEY_CREATION_DATE = "creation_date";
 
 	private static Context mainActivityContext;
 
@@ -94,11 +102,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	}
 
-	public void foo() {
+	public void temp() {
 
 		SQLiteDatabase db = this.getWritableDatabase();
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_MEAL);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SCORE);
 		createMealsTable(db);
+		createScoreTable(db);
 	}
 
 	private void createMealsTable(SQLiteDatabase db) {
@@ -114,6 +124,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		sb.append(KEY_MEAL_CALORIES + " REAL,");
 		sb.append(KEY_MEAL_SODIUM + " REAL,");
 		sb.append(KEY_MEAL_SYNCED + " INTEGER,");
+		sb.append("PRIMARY KEY( "+KEY_ID+", ");
+		sb.append(KEY_DATE+", ");
+		sb.append(KEY_MEAL_TYPE+" ) ");
 		sb.append("FOREIGN KEY(");
 		sb.append(KEY_ID);
 		sb.append(")REFERENCES ");
@@ -131,7 +144,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("CREATE TABLE " + TABLE_SCORE + "(");
-		sb.append(KEY_CREATION_DATE + " DATE,");
+		sb.append(KEY_CREATION_DATE + " DATE PRIMARY KEY,");
 		sb.append(KEY_IDEAL_CALORIES + " REAL,");
 		sb.append(KEY_IDEAL_SODIUM + " REAL");
 		sb.append(")");
@@ -212,7 +225,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_USDAfood, new String[] { KEY_ID,
 				KEY_NAME, KEY_CALORIES, KEY_PROTEIN, KEY_CARBOHYDRATE,
-				KEY_SODIUM, KEY_CHOLESTEROL, KEY_GMWT1, KEY_GMWT1_DESC,
+				KEY_FIBER, KEY_SUGAR, KEY_SODIUM, KEY_CHOLESTEROL, KEY_GMWT1, KEY_GMWT1_DESC,
 				KEY_GMWT2, KEY_GMWT2_DESC }, KEY_NAME + "=?",
 				new String[] { food_name }, null, null, null, null);
 
@@ -230,7 +243,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_USDAfood, new String[] { KEY_ID,
 				KEY_NAME, KEY_CALORIES, KEY_PROTEIN, KEY_CARBOHYDRATE,
-				KEY_SODIUM, KEY_CHOLESTEROL, KEY_GMWT1, KEY_GMWT1_DESC,
+				KEY_FIBER, KEY_SUGAR,KEY_SODIUM, KEY_CHOLESTEROL, 
+				KEY_GMWT1, KEY_GMWT1_DESC,
 				KEY_GMWT2, KEY_GMWT2_DESC }, KEY_ID + "=?",
 				new String[] { foodId + "" }, null, null, null, null);
 
@@ -262,10 +276,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_USDAfood, new String[] { KEY_ID,
 				KEY_NAME, KEY_CALORIES, KEY_PROTEIN, KEY_CARBOHYDRATE,
-				KEY_SODIUM, KEY_CHOLESTEROL, KEY_GMWT1, KEY_GMWT1_DESC,
-				KEY_GMWT2, KEY_GMWT2_DESC }, KEY_NAME + " LIKE ?",
+				KEY_FIBER, KEY_SUGAR, KEY_SODIUM, KEY_CHOLESTEROL, 
+				KEY_GMWT1, KEY_GMWT1_DESC,KEY_GMWT2, KEY_GMWT2_DESC }, KEY_NAME + " LIKE ?",
 				new String[] { "%" + food_name + "%" }, null, null, null, null);
 
+		
 		if (cursor != null && cursor.getCount() != 0) {
 			int rows = cursor.getCount();
 
@@ -283,15 +298,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		if (cursor == null)
 			Log.d("mydebug", "cursor is null");
 		else
-			Log.d("mydebug", "returned: " + cursor.getCount());
+			Log.d("mydebug", "Returned: " + cursor.getCount());
 	}
 
 	private Food createFoodItem(Cursor cursor) {
 		Food food = new Food(cursor.getInt(0), cursor.getString(1),
 				cursor.getDouble(2), cursor.getDouble(3), cursor.getDouble(4),
-				cursor.getDouble(5), cursor.getDouble(6), cursor.getDouble(7),
-				cursor.getString(8), cursor.getDouble(9), cursor.getString(10));
-
+				cursor.getDouble(5), cursor.getDouble(6), cursor.getDouble(7), 
+				cursor.getDouble(8), cursor.getDouble(9), cursor.getString(10),
+				cursor.getDouble(11), cursor.getString(12));
+		
+		Log.d("mydebug","gmwt2: "+cursor.getDouble(9));
+		Log.d("mydebug","Here in create food item: "+food);
+		/*
+		 * Food(int _NDB_No, String _food_name, double _calories,double _protein_g,
+			double _carbohydrate_g,double _sodium_mg, double _cholesterol_mg, double _gmwt1, String _gmwt1_desc,
+			double _gmwt2, String _gmwt2_desc) {
+		 */
+		/*{ KEY_ID,
+			KEY_NAME, KEY_CALORIES, KEY_PROTEIN, KEY_CARBOHYDRATE,
+			KEY_FIBER, KEY_SUGAR, KEY_SODIUM, KEY_CHOLESTEROL, KEY_GMWT1, KEY_GMWT1_DESC,
+			KEY_GMWT2, KEY_GMWT2_DESC }*/
+		
 		return food;
 	}
 
@@ -309,25 +337,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	}
 
 	// Adding new meal
-	public void addMeal(Meal meal) {
-		double calories = 0;
-		double sodium = 0;
-		// get the calories and sodium from the food table
+	public void addMeal(Meal meal, double calories,double sodium, double numServings) {
+	
+
+		// get the calorie and sodium from the food table
 		SQLiteDatabase db = this.getReadableDatabase();
-		Log.d("mydebug", "food_id: " + meal._NDB_No);
-		String query = "SELECT calories, sodium_mg FROM USDAfood where NDB_No="
-				+ meal._NDB_No;
-		Cursor cursor = db.rawQuery(query, null);
-		Log.d("mydebug", "finished query db for calories and sodium");
-		if (cursor != null && cursor.getCount() != 0) {
-			int rows = cursor.getCount();
-
-			cursor.moveToFirst();
-			calories = cursor.getDouble(0) * meal._Serving;
-			sodium = cursor.getDouble(1) * meal._Serving;
-
-		}
-		Log.d("mydebug", "caloires: " + calories);
+		Log.d("mydebug", "calories: " + calories);
 		Log.d("mydebug", "sodium: " + sodium);
 		db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
@@ -335,12 +350,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_ID, meal.get_NDB_No());
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Log.d("mydebug", dateFormat.format(new Date()));
+		
 		values.put(KEY_DATE, dateFormat.format(new Date()));
-		values.put(KEY_SERVING_SIZE, meal.get_Serving());
+		values.put(KEY_SERVING_SIZE, numServings);
 		values.put(KEY_MEAL_TYPE, meal.get_Type().getInt() + "");
 		values.put(KEY_MEAL_SYNCED, 0 + "");
 		values.put(KEY_MEAL_CALORIES, calories);
 		values.put(KEY_MEAL_SODIUM, sodium);
+		
 		Log.d("mydebug", "mealtype: " + meal.get_Type());
 		// Inserting Row
 		db.insert(TABLE_MEAL, null, values);
@@ -399,43 +416,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			}
 			Log.d("mydebug", result.toString());
 		}
-	}
-
-	public Score getDesiredScore(String date) {
-		SQLiteDatabase db = this.getReadableDatabase();
-		String query = "SELECT * from " + TABLE_SCORE
-				+ " WHERE creation_date='" + date + "'";
-		Log.d("dbdebug", query);
-		Cursor cursor = db.rawQuery(query, null);
-		if (cursor != null && cursor.getCount() != 0) {
-			int rows = cursor.getCount();
-
-			cursor.moveToFirst();
-			return new Score(cursor.getString(0), cursor.getDouble(1),
-					cursor.getDouble(2));
-		}
-		Log.d("dbdebug", "no match found in db");
-		return null;
-	}
-
-	public HashMap<String, Double> getActualScores(String date) {
-		SQLiteDatabase db = this.getReadableDatabase();
-		double actual_calories = 0;
-		double actual_sodium = 0;
-		String query = "SELECT SUM(calories), SUM(sodium) from " + TABLE_MEAL
-				+ " where creation_date='" + date + "'";
-		Log.d("dbdebug", query);
-		Cursor cursor = db.rawQuery(query, null);
-		if (cursor != null && cursor.getCount() != 0) {
-			int rows = cursor.getCount();
-			cursor.moveToFirst();
-			actual_calories = cursor.getDouble(0);
-			actual_sodium = cursor.getDouble(1);
-		}
-		HashMap<String, Double> result = new HashMap<String, Double>();
-		result.put("actual_calories", actual_calories);
-		result.put("actual_sodium", actual_sodium);
-		return result;
 	}
 
 	public ArrayList<Score> getScores() {
@@ -519,9 +499,118 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		Log.d("mydebug", "numrows: " + numRows);
 
 		db.close();
-		Log.d("dbdebug", "updated the sync bit in meals");
+
 	}
 
+	public void addIdealScore(String date, double calories, double sodium) {
+
+		/*
+		 * insert(String table, String nullColumnHack, ContentValues values)
+		 * Convenience method for inserting a row into the database.
+		 */
+
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		ContentValues values = new ContentValues();
+
+		values.put(KEY_CREATION_DATE, date);
+		values.put(KEY_IDEAL_CALORIES, calories);
+		values.put(KEY_IDEAL_SODIUM, sodium);
+
+		long ret = db.insert(TABLE_SCORE, null, values);
+		Log.d("mydebug","return: "+ret);
+		if (ret == -1) {
+			Log.d("mydebug", "error inserting values in updateDesiredScore");
+		} else {
+			Log.d("mydebug",
+					"successfully inserted values in updateDesiredScore");
+		}
+
+	}
+
+	public List<HashMap<String,String>> getAllScores() {
+		
+		SQLiteDatabase db = this.getWritableDatabase();
+		LinkedList<HashMap<String,String>> scores = new LinkedList<HashMap<String,String>>();
+		
+		String query = "SELECT creation_date, sum(calories), sum(sodium) FROM "+TABLE_MEAL+" GROUP BY creation_date";
+		Cursor cursor = db.rawQuery(query, null);
+
+		if (cursor != null && cursor.getCount() != 0) {
+			int rows = cursor.getCount();
+
+			cursor.moveToFirst();
+			HashMap<String,String>map = getScores(cursor);
+			getDesiredScore( map );
+			scores.add( map );
+			
+			for (int i = 1; i < rows; i++) {
+				
+				cursor.moveToNext();
+				map = getScores(cursor);
+				getDesiredScore( map );
+				
+				scores.add( map );
+				
+				
+			}
+		}
+		return scores;
+	}
+
+	private void getDesiredScore(HashMap<String, String> map) {
+		
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		String date = map.get( KEY_DATE );
+		
+		Cursor cursor = db.query(TABLE_SCORE, new String[] { KEY_IDEAL_CALORIES, 
+				KEY_IDEAL_SODIUM }, KEY_CREATION_DATE + "=?",
+				new String[] { date }, null, null, null, null);
+		
+		//Log.d("mydebug","date: "+date);
+		//Log.d("mydebug","cursor: "+cursor);
+		
+		if (cursor != null && cursor.getCount() != 0) {
+
+			cursor.moveToFirst();
+			map.put(IDEAL_CALORIES,cursor.getDouble(0)+"");
+			map.put(IDEAL_SODIUM,cursor.getDouble(1)+"");
+		}
+		
+	}
+
+	private HashMap<String, String> getScores(Cursor cursor) {
+		
+		String date = cursor.getString(0);
+		double calories = cursor.getDouble(1);
+		double sodium = cursor.getDouble(2);
+		HashMap<String,String>map = new HashMap<String,String>();
+		map.put(KEY_DATE, date);
+		map.put(ACTUAL_CALORIES, calories+"");
+		map.put(ACTUAL_SODIUM, sodium+"");
+		
+		return map;
+	}
+	public HashMap<String, Double> getActualScores(String date) {
+		SQLiteDatabase db = this.getReadableDatabase();
+		double actual_calories = 0;
+		double actual_sodium = 0;
+		String query = "SELECT SUM(calories), SUM(sodium) from " + TABLE_MEAL
+				+ " where creation_date='" + date + "'";
+		Log.d("dbdebug", query);
+		Cursor cursor = db.rawQuery(query, null);
+		if (cursor != null && cursor.getCount() != 0) {
+			int rows = cursor.getCount();
+			cursor.moveToFirst();
+			actual_calories = cursor.getDouble(0);
+			actual_sodium = cursor.getDouble(1);
+		}
+		HashMap<String, Double> result = new HashMap<String, Double>();
+		result.put("actual_calories", actual_calories);
+		result.put("actual_sodium", actual_sodium);
+		return result;
+	}
 	public void updateDesiredScore(String date, double calories, double sodium) {
 
 		/*
@@ -544,6 +633,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			Log.d("mydebug",
 					"successfully inserted values in updateDesiredScore");
 		}
+		
 
+	}
+	public Score getDesiredScore(String date) {
+		SQLiteDatabase db = this.getReadableDatabase();
+		String query = "SELECT * from " + TABLE_SCORE
+				+ " WHERE creation_date='" + date + "'";
+		Log.d("dbdebug", query);
+		Cursor cursor = db.rawQuery(query, null);
+		if (cursor != null && cursor.getCount() != 0) {
+			int rows = cursor.getCount();
+
+			cursor.moveToFirst();
+			return new Score(cursor.getString(0), cursor.getDouble(1),
+					cursor.getDouble(2));
+		}
+		Log.d("dbdebug", "no match found in db");
+		return null;
 	}
 }

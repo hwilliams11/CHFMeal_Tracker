@@ -8,156 +8,196 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <AbsoluteLayout
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_x="5dp"
-            android:layout_y="8dp"
-            android:src="@drawable/calories" />
-
-        <TextView
-            android:id="@+id/TextView1"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="68dp"
-            android:layout_y="35dp"
-            android:text="Today&apos;s Calories"
-            android:textSize="20sp" />
+            android:layout_gravity="center_horizontal" >
 
-        <TextView
-            android:id="@+id/actual_calories"
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/calories" />
+
+            <TextView
+                android:id="@+id/TextView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Today&apos;s Calories"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="88dp"
-            android:layout_y="91dp"
-            android:text="####"
-            android:textSize="20sp" />
+            android:layout_gravity="center_horizontal" >
 
-        <TextView
-            android:id="@+id/desired_calories"
+            <TextView
+                android:id="@+id/actual_calories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="####"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/desired_calories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="####"
+                android:textColor="#0000ff"
+                android:textSize="25sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_gravity="center_horizontal" >
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/salt" />
+
+            <TextView
+                android:id="@+id/TextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Today&apos;s Sodium(mg)"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="170dp"
-            android:layout_y="91dp"
-            android:text="####"
-            android:textSize="25sp"
-            android:textColor="#0000ff" />
+            android:layout_gravity="center_horizontal" >
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_x="5dp"
-            android:layout_y="135dp"
-            android:src="@drawable/salt" />
+            <TextView
+                android:id="@+id/actual_sodium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="####"
+                android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/TextView2"
+            <TextView
+                android:id="@+id/desired_sodium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="####"
+                android:textColor="#0000ff"
+                android:textSize="25sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="68dp"
-            android:layout_y="153dp"
-            android:text="Today&apos;s Sodium(mg)"
-            android:textSize="20sp" />
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/actual_sodium"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/calorie_arrow"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/green_arrow" />
+
+                <TextView
+                    android:id="@+id/calorie_to_go"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="100"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/calorie_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="calories under budget"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/sodium_arrow"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/green_arrow" />
+
+                <TextView
+                    android:id="@+id/sodium_to_go"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="100"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/sodium_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="mg sodium under budget"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="88dp"
-            android:layout_y="194dp"
-            android:text="####"
-            android:textSize="20sp" />
+            android:layout_gravity="center_horizontal" >
 
-        <TextView
-            android:id="@+id/desired_sodium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_x="170dp"
-            android:layout_y="194dp"
-            android:text="####"
-            android:textSize="25sp"
-            android:textColor="#0000ff" />
+            <Button
+                android:id="@+id/addFood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:padding="10dp"
+                android:text="Add Food"
+                android:textColor="#0000ff"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/ShowHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:padding="10dp"
+                android:text="Show History"
+                android:textColor="#0000ff"
+                android:textSize="20sp" />
+        </LinearLayout>
 
         <Button
-            android:id="@+id/addFood"
+            android:id="@+id/viewProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="22dp"
-            android:layout_y="350dp"
-            android:text="Add Food" 
-            android:textColor="#0000ff"
+            android:layout_gravity="center_horizontal"
             android:background="#ffffff"
-            android:textSize="25sp"/>
-
-        <Button
-            android:id="@+id/ShowHistory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_x="162dp"
-            android:layout_y="350dp"
-            android:text="Show History" 
+            android:text="View Progress"
             android:textColor="#0000ff"
-            android:background="#ffffff"
-            android:textSize="25sp"/>
-
-        <ImageView
-            android:id="@+id/calorie_arrow"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_x="16dp"
-            android:layout_y="240dp"
-            android:src="@drawable/green_arrow" />
-
-        <ImageView
-            android:id="@+id/sodium_arrow"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_x="16dp"
-            android:layout_y="300dp"
-            android:src="@drawable/green_arrow" />
-
-        <TextView
-            android:id="@+id/calorie_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_x="155dp"
-            android:layout_y="245dp"
-            android:text="calories under budget"
-            android:textSize="15sp" />
-        <TextView
-            android:id="@+id/calorie_to_go"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_x="60dp"
-            android:layout_y="245dp"
-            android:text="100"
-            android:textSize="20sp" 
-            />
-
-        <TextView
-            android:id="@+id/sodium_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_x="155dp"
-            android:layout_y="303dp"
-            android:text="mg sodium under budget"
-            android:textSize="15sp" />
-        <TextView
-            android:id="@+id/sodium_to_go"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_x="60dp"
-            android:layout_y="303dp"
-            android:text="100"
-            android:textSize="20sp" 
-            />
-
-    </AbsoluteLayout>
+            android:textSize="20sp" />
+    </LinearLayout>
 
 </LinearLayout>
